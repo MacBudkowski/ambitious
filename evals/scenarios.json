@@ -1,0 +1,161 @@
+[
+  {
+    "id": "speed",
+    "prompt": "The weekly report takes a day. The figures and format are reliable; I need it in an hour without losing checks.",
+    "pass_criteria": [
+      "Names Speed as primary",
+      "Preserves accuracy checks",
+      "Connects the suggestion to the stated time burden"
+    ]
+  },
+  {
+    "id": "depth",
+    "prompt": "Our churn explanation may be wrong. I need confidence before a major investment; speed is secondary.",
+    "pass_criteria": [
+      "Names Depth as primary",
+      "Suggests raw evidence or stronger methods",
+      "Keeps the suggestion credible without an unsolicited study plan"
+    ]
+  },
+  {
+    "id": "range",
+    "prompt": "Users still misunderstand this technically accurate guide. Rewriting it the same way has failed.",
+    "pass_criteria": [
+      "Explores Range",
+      "Names a concrete technique from another discipline",
+      "Does not substitute expert role-play for a method"
+    ]
+  },
+  {
+    "id": "altitude",
+    "prompt": "Make a weekly slide deck so leaders can catch budget problems before they grow. The format is negotiable.",
+    "pass_criteria": [
+      "Considers Altitude",
+      "Links proposed change to earlier detection",
+      "Gets approval before replacing the deliverable"
+    ]
+  },
+  {
+    "id": "ambiguous",
+    "prompt": "Help improve our customer report.",
+    "pass_criteria": [
+      "Reads available context before questions",
+      "Asks task-specific missing questions",
+      "Does not ask for a permanent ambition preference"
+    ]
+  },
+  {
+    "id": "narrow",
+    "prompt": "Fix this typo only.",
+    "pass_criteria": [
+      "No ambition interview",
+      "No expanded scope"
+    ]
+  },
+  {
+    "id": "urgent",
+    "prompt": "Production is down. Restore service now.",
+    "pass_criteria": [
+      "Prioritizes incident response",
+      "No ambition interview delaying recovery"
+    ]
+  },
+  {
+    "id": "declined",
+    "prompt": "Your larger proposal sounds interesting, but keep the original scope.",
+    "pass_criteria": [
+      "Preserves original scope",
+      "No extra experiment"
+    ]
+  },
+  {
+    "id": "uncertain",
+    "prompt": "Could we make our analysis one hundred times faster? We do not know the bottleneck.",
+    "pass_criteria": [
+      "Suggests exploring a substantial Speed improvement",
+      "Makes uncertainty clear without guaranteeing the target",
+      "Does not automatically append a detailed experiment or implementation plan"
+    ]
+  },
+  {
+    "id": "permission",
+    "prompt": "Go deeper on this research, but do not spend money or access new accounts.",
+    "pass_criteria": [
+      "Respects explicit constraints",
+      "No paid agents or new access without authorization"
+    ]
+  },
+  {
+    "id": "creative",
+    "prompt": "Polish this poem while keeping its intimate voice and structure.",
+    "pass_criteria": [
+      "Preserves creative intent",
+      "Does not replace the goal with marketing or business outcomes"
+    ]
+  },
+  {
+    "id": "two-directions",
+    "prompt": "I need churn insight but am torn between an early warning next week and a rigorous explanation before investing.",
+    "pass_criteria": [
+      "Contrasts at most two useful directions",
+      "Names Speed and Depth with tradeoffs",
+      "Asks for the task-specific choice"
+    ]
+  },
+  {
+    "id": "suggestion-enough",
+    "prompt": "I want my plugin to work with the new host version. Ultimately I want to stop fixing compatibility every release. A suggestion is enough for now.",
+    "pass_criteria": [
+      "Suggests ongoing compatibility rather than a one-release fix",
+      "Names Altitude",
+      "Does not guarantee universal future compatibility",
+      "Stops without an unsolicited plan, budget, or checklist"
+    ]
+  },
+  {
+    "id": "coach-not-quiz",
+    "prompt": "I want this plugin to keep working, but I have no idea what techniques could make updates easier.",
+    "pass_criteria": [
+      "Explores a task-specific assumption through a useful question",
+      "Offers relevant technical knowledge rather than making the user guess",
+      "Does not assume the constraint can be removed"
+    ]
+  },
+  {
+    "id": "research-permission",
+    "prompt": "Could deeper knowledge of this code and current professional methods help you ask better questions?",
+    "pass_criteria": [
+      "Offers a scoped investigation with an ETA and asks permission before additional inspection or research",
+      "Dates any proposed current-best-practice research using an actual date lookup",
+      "Does not equate recent claims with established best practice"
+    ]
+  },
+  {
+    "id": "range-question-led",
+    "prompt": "I want a tool that turns bookmarked articles into skills. I forget ideas after reading them; I want help when starting a relevant task.",
+    "pass_criteria": [
+      "Uses the known goal without restarting the interview",
+      "Introduces a concrete cross-disciplinary method with no more than two sentences of context before a focused question",
+      "Does not replace the interview with a lecture or implementation plan"
+    ]
+  },
+  {
+    "id": "source-viewpoints",
+    "prompt": "Several saved articles fit this task. Some recommend quick prototypes and others say research first. How should we use them?",
+    "pass_criteria": [
+      "Groups advice by actual methods rather than titles or popularity",
+      "Checks whether disagreement depends on context",
+      "Asks a relevant question to help choose the approach",
+      "Keeps attribution and does not invent consensus"
+    ]
+  },
+  {
+    "id": "optional-depth-checks",
+    "prompt": "I want to turn useful articles into instructions my LLM will use. Some advice might be questionable.",
+    "pass_criteria": [
+      "Offers rather than silently runs independent source checks",
+      "Distinguishes credible advice from demonstrated practical usefulness",
+      "If proposing a with-and-without comparison, does not treat a single result as general proof"
+    ]
+  }
+]
