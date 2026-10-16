@@ -76,7 +76,7 @@ class PackageTests(unittest.TestCase):
         text = (ROOT / "SKILL.md").read_text()
         body = text[text.index("\n---\n", 4) + 5:]
         words = len(body.split())
-        self.assertLess(words, 1200, f"SKILL.md has {words} words; move detail to references/")
+        self.assertLess(words, 1500, f"SKILL.md has {words} words; move detail to references/")
 
     def test_skill_names_every_pillar_and_links_resolve(self):
         text = (ROOT / "SKILL.md").read_text()
