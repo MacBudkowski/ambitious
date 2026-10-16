@@ -12,25 +12,32 @@ Ambitious shows you **bolder versions of your own request**, as prompts you can 
 
 > **You:** /ambitious I need my plugin to work with the new host release. Honestly I'm tired of fixing this every release.
 >
-> **Agent:** **The goal behind the goal:** you want the plugin to keep working when the host ships, without you spending time on every release.
+> **Agent:** **The goal behind the goal:** You want your plugin to survive host releases without another repair job landing on you.
 >
-> 1. > "Look at the last few host releases and what broke in the plugin each time. Find what they have in common, fix the break in the new release, and add compatibility tests that would have caught every one of those past breaks."
+> **1. Fix this release—and explain the recurring breakage**
 >
->    *Needs:* repo access, past host changelogs, older host builds. *Check:* each past break is reproduced by a test that fails on the old code and passes on the fix.
+> > "Get my plugin working with the new host release. Compare this failure with previous compatibility fixes, identify what keeps breaking, and add tests that reproduce those failures."
 >
-> 2. > "List every host API, hook and config format the plugin depends on. Move them behind one adapter layer, then set up CI that runs the plugin against the last 3 host releases plus the pre-release build."
+> *Needs:* Plugin source, old and new host versions, previous fixes or bug reports.
+> *Check:* Tests reproduce the failures before the fix; the plugin's affected features work in the actual new host afterward.
 >
->    *Needs:* installable host builds, a CI runner. *Check:* re-introduce a past API change and CI goes red.
+> **2. Make host upgrades a tested event, not a repair project**
 >
-> 3. > "Keep the plugin compatible with the host. Check for new releases and pre-releases daily, run the plugin against them, and when something breaks, reproduce it, open a PR with a fix and a test, and tell me only when it needs a decision."
+> > "Stop patching host-version assumptions throughout my plugin. Use our history of breakages to design a small compatibility boundary, migrate the affected code, and test it against supported host versions and available prereleases. Show that the checks would have caught our previous failures."
 >
->    *Needs:* a release feed, CI, permission to open PRs (not merge them). Setting this up is the real first step. *Check:* host releases that break users, trending to zero.
+> *Needs:* Repository history, runnable host versions, a defined support range, and CI access.
+> *Check:* Historical failures are caught by the tests; real-host checks pass across the supported versions.
 >
-> Felix Rieseberg went from asking Claude to fix individual crashes to asking it to keep his apps crash-free. Rung 3 is the same move for compatibility.
+> **3. Take release compatibility off my plate**
 >
-> Pick one and I'll start, or keep the original and fix just this release.
+> > "Build a compatibility-maintenance workflow for my plugin: detect new host releases and prereleases, run realistic plugin checks, reproduce regressions, and prepare tested fixes before users hit them. Bring me only decisions that require changing plugin behavior or dropping support. Prove it against past breaking releases, then run it alongside my current process for one release cycle."
+>
+> *Needs:* Release feeds, repeatable host test environments, CI and repository access, plus an agreed automation budget and approval boundaries.
+> *Check:* Replay past releases to measure which breakages it catches; during the live cycle, track missed regressions and how often you still have to intervene.
+>
+> Pick one and I'll start, or keep the original.
 
-A real reply from the current skill (lightly trimmed).
+A real reply from a live test of the current skill.
 
 ## How it works
 
