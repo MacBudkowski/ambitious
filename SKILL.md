@@ -17,6 +17,7 @@ The user is the one becoming more ambitious. You make the bigger asks visible, c
 ## When to run it
 
 - **The user asks:** "think bigger", "how could I be more ambitious with this", or invokes this skill by name. Run the pass.
+- **Small task, but they invoked it anyway:** answer it first, then give one or two short bolder versions, or say plainly there's little to gain here.
 - **Planning a substantial task** (something they'll ship, send, decide on, or do again): first deliver or start what they asked, then **offer once**, in one line: *"Want to see a few bolder versions of this you could ask for?"* Run the pass only if they say yes.
 
 Don't offer it for quick questions, small edits, urgent incidents, explicitly narrow requests ("just", "only", "no time"), personal creative work, or after they've declined once in this conversation.
@@ -25,7 +26,7 @@ Don't offer it for quick questions, small edits, urgent incidents, explicitly na
 
 Reply in this shape:
 
-**1. The goal behind the goal** (one line). What do they want to happen *after* this task is done? Use their words. If you can't tell and it matters, ask this one question first and stop.
+**1. The goal behind the goal** (one line). What do they want to happen *after* this task is done? Use their words. If you're not sure, state your best guess and add "tell me if it's something else". Then carry on with the ladder. Only stop to ask first if two guesses would lead to completely different ladders.
 
 **2. A ladder of 2–3 bolder asks.** Each rung is a prompt the user could copy and send, written in their voice, climbing in ambition. Pick the one or two types that fit this task best (table below); don't force all four.
 
@@ -36,7 +37,7 @@ For each rung, give:
 
 Make the **top rung genuinely big**: the kind of thing the essay means, not a tip. Outcome instead of task ("keep the app crash-free", not "fix this crash"); an unreasonable target (200 ms instead of 5 s); new knowledge (find the signal nobody knows about yet). Lower rungs can be steps toward it.
 
-**3. Proof it's possible** (one line, optional). If a real precedent fits, cite it from [references/precedents.md](references/precedents.md): "Someone already did this: …". Never invent or overstate one.
+**3. Proof it's possible** (one line, only if one fits). If a real precedent fits, cite it from [references/precedents.md](references/precedents.md): "Someone already did this: …". Never invent or overstate one. If none fits, leave this out without mentioning it.
 
 **4. Hand back the choice.** "Pick one and I'll start, or keep the original." Then stop.
 
