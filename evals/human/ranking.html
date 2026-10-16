@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blind ranking</title>
+<style>
+:root {
+  --bg: #f7f6f3; --panel: #ffffff; --ink: #1f2328; --muted: #6b6f76; --line: #e2e0db;
+  --accent: #2f6f8f; --accent-soft: #e3eef3; --good: #2e7d4f; --warn: #a15c00; --code: #f1efea;
+  --shadow: 0 1px 2px rgba(0,0,0,.05), 0 2px 8px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181a; --panel: #202124; --ink: #e6e6e3; --muted: #9a9ca1; --line: #34363a;
+    --accent: #7fb6d1; --accent-soft: #24343d; --good: #6cc191; --warn: #e0a656; --code: #2a2b2f;
+    --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body { font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+button, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1500px; margin: 0 auto; padding: 20px 20px 80px; }
+header.top { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+h1 { font-size: 1.05rem; font-weight: 600; margin: 0; color: var(--muted); }
+.progress { display: flex; align-items: center; gap: 12px; }
+.progress strong { font-size: 1.05rem; }
+.dots { display: flex; gap: 6px; flex-wrap: wrap; }
+.dot { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); background: var(--panel); cursor: pointer; font-size: .75rem; padding: 0; }
+.dot.done { background: var(--good); border-color: var(--good); color: #fff; }
+.dot.partial { border-color: var(--warn); color: var(--warn); }
+.dot.current { box-shadow: 0 0 0 2px var(--accent); }
+.btn { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 7px 14px; cursor: pointer; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+.btn:disabled { opacity: .45; cursor: default; }
+.prompt { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow); margin-bottom: 18px; }
+.prompt .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 6px; }
+.prompt .text { white-space: pre-wrap; font-size: 1.05rem; }
+.steps { color: var(--muted); font-size: .93rem; margin: 0 0 14px; }
+.ranker { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.ranker h2, .note h2 { font-size: .95rem; margin: 0 0 10px; }
+.slots { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+.slot { min-width: 110px; flex: 1 1 110px; border: 1.5px dashed var(--line); border-radius: 10px; padding: 8px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.slot .n { font-size: .78rem; color: var(--muted); }
+.slot.over, .pool.over { border-color: var(--accent); background: var(--accent-soft); }
+.pool { display: flex; gap: 8px; flex-wrap: wrap; min-height: 46px; align-items: center; margin-top: 10px; padding: 6px; border-radius: 10px; border: 1.5px dashed transparent; }
+.pool .hint { color: var(--muted); font-size: .85rem; }
+.chip { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 36px; border-radius: 8px; background: var(--accent); color: var(--bg); font-weight: 700; cursor: grab; border: 0; user-select: none; }
+.chip.unranked { background: var(--panel); color: var(--ink); border: 1.5px solid var(--accent); }
+.chip.dragging { opacity: .4; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; align-items: start; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--panel); border-radius: 12px 12px 0 0; z-index: 1; }
+.card-head .name { font-weight: 700; font-size: 1.05rem; }
+.badge { font-size: .8rem; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.badge.empty { background: transparent; color: var(--muted); font-weight: 400; }
+.body { padding: 4px 16px 10px; overflow-wrap: anywhere; }
+.body h1, .body h2, .body h3, .body h4 { font-size: 1.02rem; margin: 1em 0 .4em; color: var(--ink); }
+.body h1 { font-size: 1.12rem; }
+.body p { margin: .6em 0; }
+.body ul, .body ol { padding-left: 1.4em; margin: .5em 0; }
+.body li { margin: .2em 0; }
+.body code { background: var(--code); padding: .1em .35em; border-radius: 4px; font: .88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.body pre { background: var(--code); padding: 10px 12px; border-radius: 8px; overflow-x: auto; }
+.body pre code { padding: 0; background: none; }
+.body blockquote { margin: .6em 0; padding-left: 12px; border-left: 3px solid var(--line); color: var(--muted); }
+.body hr { border: 0; border-top: 1px solid var(--line); margin: 1em 0; }
+.body a { color: var(--accent); }
+.body table { border-collapse: collapse; font-size: .92em; }
+.qs { border-top: 1px solid var(--line); padding: 12px 14px 14px; display: grid; gap: 12px; }
+.qs .q { font-size: .88rem; color: var(--muted); margin-bottom: 6px; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 5px 12px; cursor: pointer; min-width: 52px; }
+.seg button:hover { border-color: var(--accent); }
+.seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+.note { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-top: 18px; box-shadow: var(--shadow); }
+.note textarea { width: 100%; min-height: 80px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: var(--bg); resize: vertical; }
+.navbar { display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 18px; flex-wrap: wrap; }
+.status { color: var(--muted); font-size: .9rem; }
+.status.ok { color: var(--good); }
+.kbd { font-size: .8rem; color: var(--muted); margin-top: 22px; }
+kbd { font: .8em ui-monospace, Menlo, monospace; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Blind ranking</h1>
+    <div class="progress">
+      <strong id="progress" aria-live="polite"></strong>
+      <div class="dots" id="dots" role="navigation" aria-label="Jump to prompt"></div>
+    </div>
+    <div>
+      <button class="btn primary" id="export">Export results</button>
+    </div>
+  </header>
+
+  <section class="prompt" aria-labelledby="prompt-label">
+    <div class="label" id="prompt-label">Original prompt</div>
+    <div class="text" id="prompt-text"></div>
+  </section>
+
+  <p class="steps">Read every reply. <b>1.</b> Rank them best to worst (drag the letters, or use the 1st/2nd/… buttons on each reply). <b>2.</b> For each reply, answer the boldness question. <b>3.</b> Optionally leave a note. Answers save automatically in this browser.</p>
+
+  <section class="ranker" aria-labelledby="rank-h">
+    <h2 id="rank-h">Your ranking (best → worst)</h2>
+    <div class="slots" id="slots"></div>
+    <div class="pool" id="pool" aria-label="Not yet ranked"></div>
+  </section>
+
+  <div class="grid" id="grid"></div>
+
+  <section class="note">
+    <h2><label for="note">Note (optional)</label></h2>
+    <textarea id="note" placeholder="Anything worth remembering about this prompt…"></textarea>
+  </section>
+
+  <div class="navbar">
+    <button class="btn" id="prev">← Previous</button>
+    <span class="status" id="status" aria-live="polite"></span>
+    <button class="btn primary" id="next">Next →</button>
+  </div>
+
+  <p class="kbd">Keyboard: <kbd>Tab</kbd> moves between buttons · focus a letter chip and press <kbd>1</kbd>–<kbd>4</kbd> to place it · <kbd>0</kbd> or <kbd>Backspace</kbd> un-ranks it · <kbd>Alt</kbd>+<kbd>←</kbd>/<kbd>→</kbd> previous/next prompt.</p>
+</div>
+
+<script>
+"use strict";
+const BUILD_ID = "589f22046f73";
+const DATA = [{"id": "ex-01", "prompt": "Help me plan a weekend project: a small script that renames my vacation photos by date.", "candidates": [{"label": "A", "text": "## Aim a bit higher\n\nRenaming is a fine start, but you could build a *tiny photo librarian* in the same weekend:\n\n- Rename by date **and** place (reverse-geocode GPS)\n- Detect duplicates with a perceptual hash\n- Generate a one-page HTML album per trip\n\nStart with renaming on Saturday morning; add the album if it goes well. See [Pillow docs](https://pillow.readthedocs.io/)."}, {"label": "B", "text": "You want a script that renames vacation photos by date. Steps:\n\n- read the date\n- rename the file\n- test on a copy first\n\n\u003e Tip: always keep a backup."}, {"label": "C", "text": "Sure! Here's a simple plan:\n\n1. List the files in the folder\n2. Read each photo's **EXIF date**\n3. Rename to `YYYY-MM-DD_HHMMSS.jpg`\n\n```python\nfrom pathlib import Path\nfor p in Path('.').glob('*.jpg'):\n    print(p)\n```"}]}, {"id": "ex-02", "prompt": "I want to write a blog post about learning to cook this year.", "candidates": [{"label": "A", "text": "Write a short post covering *why* you started cooking, what you learned, and your favourite recipe. Keep it under 800 words."}, {"label": "B", "text": "Great idea. Outline:\n\n1. Why you started\n2. Three dishes you mastered\n3. Mistakes\n4. What's next"}, {"label": "C", "text": "What if this became a **12-post series** instead — one dish per month, each with a story, a photo, and a cost breakdown? You'd end the year with a small e-book.\n\n### First post\n- Hook: the worst meal you made in January\n- Promise: what readers will cook by December"}]}];
+const STORE_KEY = "blind-ranking:" + BUILD_ID;
+const ORD = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
+const BOLD_OPTS = [["yes", "Yes"], ["somewhat", "Somewhat"], ["no", "No"]];
+const BOLD_Q = "Would this make me ask for something bolder than I would have?";
+
+/* ---------- state ---------- */
+let state = load();
+function blank() { return { current: 0, answers: {} }; }
+function load() {
+  try { const s = JSON.parse(localStorage.getItem(STORE_KEY)); if (s && s.answers) return s; } catch (e) {}
+  return blank();
+}
+function save() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+  catch (e) { setStatus("Could not save in this browser — export often.", false); }
+}
+function ans(pid) {
+  if (!state.answers[pid]) state.answers[pid] = { ranks: {}, bolder: {}, note: "", updated_at: null };
+  return state.answers[pid];
+}
+function touch(a) { a.updated_at = new Date().toISOString(); save(); }
+function completeness(item) {
+  const a = state.answers[item.id];
+  if (!a) return "none";
+  const n = item.candidates.length;
+  const ranked = item.candidates.filter(c => a.ranks[c.label]).length;
+  const bold = item.candidates.filter(c => a.bolder[c.label]).length;
+  if (ranked === n && bold === n) return "done";
+  return (ranked || bold || a.note) ? "partial" : "none";
+}
+
+/* ---------- tiny markdown renderer ---------- */
+function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+function inline(src) {
+  const stash = [];
+  const keep = html => "\u0000" + (stash.push(html) - 1) + "\u0000";
+  let s = src.replace(/`([^`]+)`/g, (_, c) => keep("<code>" + esc(c) + "</code>"));
+  s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => {
+    const ok = /^(https?:|mailto:|#)/i.test(u);
+    return ok ? keep('<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">') + t + keep("</a>") : t;
+  });
+  s = esc(s);
+  s = s.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/__(.+?)__/g, "<strong>$1</strong>");
+  s = s.replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, "$1<em>$2</em>").replace(/(^|\W)_(?!\s)(.+?)_(?=\W|$)/g, "$1<em>$2</em>");
+  s = s.replace(/~~(.+?)~~/g, "<del>$1</del>");
+  return s.replace(/\u0000(\d+)\u0000/g, (_, i) => stash[+i]);
+}
+function md(src) {
+  const lines = String(src).replace(/\r\n?/g, "\n").split("\n");
+  const out = []; let i = 0;
+  const isList = l => /^\s*([-*+]|\d+[.)])\s+/.test(l);
+  const isBlockStart = l => /^(#{1,6}\s|```|>|\s*([-*+]|\d+[.)])\s+|\s*([-*_])(\s*\3){2,}\s*$)/.test(l);
+  while (i < lines.length) {
+    const line = lines[i];
+    if (/^```/.test(line)) {
+      const buf = []; i++;
+      while (i < lines.length && !/^```/.test(lines[i])) buf.push(lines[i++]);
+      i++; out.push("<pre><code>" + esc(buf.join("\n")) + "</code></pre>"); continue;
+    }
+    if (!line.trim()) { i++; continue; }
+    let m;
+    if ((m = line.match(/^(#{1,6})\s+(.*?)\s*#*\s*$/))) { const n = Math.min(m[1].length + 1, 4); out.push("<h" + n + ">" + inline(m[2]) + "</h" + n + ">"); i++; continue; }
+    if (/^\s*([-*_])(\s*\1){2,}\s*$/.test(line)) { out.push("<hr>"); i++; continue; }
+    if (/^>/.test(line)) {
+      const buf = []; while (i < lines.length && /^>/.test(lines[i])) buf.push(lines[i++].replace(/^>\s?/, ""));
+      out.push("<blockquote>" + md(buf.join("\n")) + "</blockquote>"); continue;
+    }
+    if (isList(line)) {
+      const ordered = /^\s*\d+[.)]\s+/.test(line);
+      const base = line.match(/^\s*/)[0].length;
+      const items = [];
+      while (i < lines.length && (isList(lines[i]) || (/^\s+\S/.test(lines[i]) && items.length))) {
+        const l = lines[i];
+        const ind = l.match(/^\s*/)[0].length;
+        if (isList(l) && ind <= base + 1) items.push([l.replace(/^\s*([-*+]|\d+[.)])\s+/, "")]);
+        else items[items.length - 1].push(l.slice(Math.min(ind, base + 2)));
+        i++;
+      }
+      const tag = ordered ? "ol" : "ul";
+      out.push("<" + tag + ">" + items.map(it => {
+        const [first, ...rest] = it;
+        return "<li>" + inline(first) + (rest.length ? md(rest.join("\n")) : "") + "</li>";
+      }).join("") + "</" + tag + ">");
+      continue;
+    }
+    const buf = [];
+    while (i < lines.length && lines[i].trim() && !(buf.length && isBlockStart(lines[i]))) buf.push(lines[i++]);
+    out.push("<p>" + buf.map(inline).join("<br>") + "</p>");
+  }
+  return out.join("\n");
+}
+
+/* ---------- ranking logic ---------- */
+function assign(item, label, rank) {
+  const a = ans(item.id);
+  const old = a.ranks[label] || null;
+  if (rank) {
+    const occupant = Object.keys(a.ranks).find(l => a.ranks[l] === rank && l !== label);
+    if (occupant) { if (old) a.ranks[occupant] = old; else delete a.ranks[occupant]; }
+    a.ranks[label] = rank;
+  } else delete a.ranks[label];
+  touch(a);
+}
+
+/* ---------- rendering ---------- */
+const $ = id => document.getElementById(id);
+let dragLabel = null;
+
+function chip(item, label, ranked) {
+  const b = document.createElement("button");
+  b.className = "chip" + (ranked ? "" : " unranked");
+  b.textContent = label; b.draggable = true; b.dataset.label = label;
+  b.setAttribute("aria-label", "Reply " + label + (ranked ? ", ranked " + ORD[ranked - 1] : ", not ranked") + ". Press a number to place it.");
+  b.addEventListener("dragstart", e => { dragLabel = label; b.classList.add("dragging"); e.dataTransfer.setData("text/plain", label); e.dataTransfer.effectAllowed = "move"; });
+  b.addEventListener("dragend", () => { dragLabel = null; b.classList.remove("dragging"); });
+  b.addEventListener("keydown", e => {
+    const n = item.candidates.length;
+    if (/^[1-9]$/.test(e.key) && +e.key <= n) { e.preventDefault(); assign(item, label, +e.key); render(label); }
+    else if (e.key === "0" || e.key === "Backspace" || e.key === "Delete") { e.preventDefault(); assign(item, label, null); render(label); }
+  });
+  return b;
+}
+function dropTarget(el, item, rank) {
+  el.addEventListener("dragover", e => { e.preventDefault(); el.classList.add("over"); });
+  el.addEventListener("dragleave", () => el.classList.remove("over"));
+  el.addEventListener("drop", e => {
+    e.preventDefault(); el.classList.remove("over");
+    const label = dragLabel || e.dataTransfer.getData("text/plain");
+    if (label) { assign(item, label, rank); render(); }
+  });
+}
+
+function render(focusChip) {
+  const idx = state.current, item = DATA[idx], n = item.candidates.length, a = ans(item.id);
+  $("progress").textContent = (idx + 1) + " of " + DATA.length;
+  $("prompt-text").textContent = item.prompt;
+
+  const dots = $("dots"); dots.innerHTML = "";
+  DATA.forEach((it, j) => {
+    const d = document.createElement("button");
+    const c = completeness(it);
+    d.className = "dot" + (c === "done" ? " done" : c === "partial" ? " partial" : "") + (j === idx ? " current" : "");
+    d.textContent = j + 1;
+    d.setAttribute("aria-label", "Prompt " + (j + 1) + (c === "done" ? ", complete" : c === "partial" ? ", partly answered" : ""));
+    if (j === idx) d.setAttribute("aria-current", "step");
+    d.onclick = () => go(j);
+    dots.appendChild(d);
+  });
+
+  const slots = $("slots"); slots.innerHTML = "";
+  for (let r = 1; r <= n; r++) {
+    const s = document.createElement("div"); s.className = "slot";
+    const lab = document.createElement("div"); lab.className = "n"; lab.textContent = ORD[r - 1] + (r === 1 ? " (best)" : r === n ? " (worst)" : "");
+    s.appendChild(lab);
+    const who = Object.keys(a.ranks).find(l => a.ranks[l] === r);
+    if (who) s.appendChild(chip(item, who, r));
+    dropTarget(s, item, r);
+    slots.appendChild(s);
+  }
+  const pool = $("pool"); pool.innerHTML = "";
+  const unranked = item.candidates.map(c => c.label).filter(l => !a.ranks[l]);
+  unranked.forEach(l => pool.appendChild(chip(item, l, 0)));
+  if (!unranked.length) { const h = document.createElement("span"); h.className = "hint"; h.textContent = "All ranked. Drag a letter here to un-rank it."; pool.appendChild(h); }
+  else { const h = document.createElement("span"); h.className = "hint"; h.textContent = "← not ranked yet"; pool.appendChild(h); }
+  dropTarget(pool, item, null);
+
+  const grid = $("grid"); grid.innerHTML = "";
+  item.candidates.forEach(c => {
+    const card = document.createElement("article"); card.className = "card";
+    card.setAttribute("aria-label", "Reply " + c.label);
+    const r = a.ranks[c.label];
+    card.innerHTML =
+      '<div class="card-head"><span class="name">Reply ' + c.label + '</span>' +
+      '<span class="badge' + (r ? "" : " empty") + '">' + (r ? ORD[r - 1] : "not ranked") + "</span></div>" +
+      '<div class="body">' + md(c.text) + "</div>";
+    const qs = document.createElement("div"); qs.className = "qs";
+    qs.appendChild(segment("Rank this reply", ORD.slice(0, n).map((o, k) => [k + 1, o]), r || null,
+      v => { assign(item, c.label, r === v ? null : v); render(); }, "rank-" + c.label));
+    qs.appendChild(segment(BOLD_Q, BOLD_OPTS, a.bolder[c.label] || null,
+      v => { const cur = ans(item.id); if (cur.bolder[c.label] === v) delete cur.bolder[c.label]; else cur.bolder[c.label] = v; touch(cur); render(); }, "bold-" + c.label));
+    card.appendChild(qs);
+    grid.appendChild(card);
+  });
+
+  const note = $("note");
+  if (document.activeElement !== note) note.value = a.note || "";
+  $("prev").disabled = idx === 0;
+  $("next").textContent = idx === DATA.length - 1 ? "Finish" : "Next →";
+  const c = completeness(item);
+  setStatus(c === "done" ? "This prompt is complete ✓" : "Rank all replies and answer each boldness question.", c === "done");
+
+  if (focusChip) { const el = document.querySelector('.chip[data-label="' + focusChip + '"]'); if (el) el.focus(); }
+  else if (pendingFocus) { const el = document.getElementById(pendingFocus); pendingFocus = null; if (el) el.focus(); }
+}
+
+let pendingFocus = null;
+function segment(question, opts, current, onPick, idBase) {
+  const wrap = document.createElement("div");
+  const q = document.createElement("div"); q.className = "q"; q.textContent = question; q.id = idBase + "-q";
+  const seg = document.createElement("div"); seg.className = "seg"; seg.setAttribute("role", "group"); seg.setAttribute("aria-labelledby", q.id);
+  opts.forEach(([val, text]) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = text; b.id = idBase + "-" + val;
+    b.setAttribute("aria-pressed", String(current === val));
+    b.onclick = () => { pendingFocus = b.id; onPick(val); };
+    seg.appendChild(b);
+  });
+  wrap.appendChild(q); wrap.appendChild(seg);
+  return wrap;
+}
+
+function setStatus(t, ok) { const s = $("status"); s.textContent = t; s.className = "status" + (ok ? " ok" : ""); }
+function go(j) {
+  if (j < 0 || j >= DATA.length) return;
+  state.current = j; save(); render(); window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ---------- export ---------- */
+function exportResults() {
+  const incomplete = DATA.filter(it => completeness(it) !== "done").map((it, _) => DATA.indexOf(it) + 1);
+  if (incomplete.length && !confirm("Prompts not fully answered: " + incomplete.join(", ") + ".\nExport anyway?")) return;
+  const results = {
+    build_id: BUILD_ID,
+    exported_at: new Date().toISOString(),
+    answers: DATA.map(it => {
+      const a = state.answers[it.id] || { ranks: {}, bolder: {}, note: "", updated_at: null };
+      const order = it.candidates.map(c => c.label).filter(l => a.ranks[l]).sort((x, y) => a.ranks[x] - a.ranks[y]);
+      return { prompt_id: it.id, ranks: a.ranks, order: order, bolder: a.bolder, note: a.note || "",
+               complete: completeness(it) === "done", timestamp: a.updated_at };
+    })
+  };
+  const blob = new Blob([JSON.stringify(results, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a"); link.href = url; link.download = "results.json";
+  document.body.appendChild(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setStatus("Downloaded results.json", true);
+}
+
+/* ---------- wiring ---------- */
+$("prev").onclick = () => go(state.current - 1);
+$("next").onclick = () => {
+  if (state.current === DATA.length - 1) {
+    const left = DATA.filter(it => completeness(it) !== "done").length;
+    setStatus(left ? left + " prompt(s) still incomplete — use the numbered dots to return." : "All done! Click “Export results” to download.", !left);
+    $("export").focus();
+  } else go(state.current + 1);
+};
+$("export").onclick = exportResults;
+$("note").addEventListener("input", e => { const a = ans(DATA[state.current].id); a.note = e.target.value; touch(a); });
+$("note").addEventListener("change", () => render());
+document.addEventListener("keydown", e => {
+  if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); go(state.current - 1); }
+  else if (e.altKey && e.key === "ArrowRight") { e.preventDefault(); go(state.current + 1); }
+});
+if (state.current >= DATA.length || state.current < 0) state.current = 0;
+render();
+</script>
+</body>
+</html>

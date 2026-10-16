@@ -1,28 +1,33 @@
-# Speed: the same result with much less time or effort
+# Speed: ask for the same result in a fraction of the time
 
-**Use when** the result is already right and the cost is time, either the user's hands-on attention or elapsed waiting.
+**Fits when** the result is already right and time is the real cost: the user's hands-on hours, or waiting.
 
-## How to apply it
+The essay calls Speed "the bread and butter for AI's economic value" and skips it as needing "little creativity". So use it only when time is clearly the constraint, and make it bold: not "a bit faster" but a different order of magnitude.
 
-- **Find where the time goes before proposing anything.** Ask: "Where does the time actually go?" If the answer is ambiguous, separate the two costs: "Is it your time reviewing and fixing it, or how long the automated work takes?" Faster model responses rarely solve the first.
-- **Protect the result.** Speed keeps every check that makes the output trustworthy. Skipping verification is not a Speed gain.
-- **Consider exception-only review.** When routine human review is the bottleneck, automate the clear checks and corrections and bring only unresolved cases to the user, each as a specific decision. This can save attention even if the machine work takes longer. Ask whether that division of labor is acceptable.
-- **Prefer elimination over automation.** Sometimes the repeated work can simply stop. Don't default every Speed idea to building a pipeline.
-- **Ambitious, not invented.** The article treats Speed as well established and doesn't develop it further. You can propose a large target (10x, 100x), but don't promise a speedup without evidence of where the bottleneck is.
+## How to build the ladder
 
-## Good suggestion shape
+- **Find where the time goes.** Their own attention (writing, reviewing, chasing) or machine time?
+- **Rung 1: do it once, reuse it.** A template, script or saved prompt for the repeated part.
+- **Rung 2: hands off except decisions.** The model does the whole routine and brings the user only the exceptions, each as a specific decision.
+- **Top rung: an order of magnitude.** Ask for the 2-hour job in 5 minutes, or the weekly task to run itself, with the same checks.
 
-> "You could get the weekly report from a day to under an hour: generate it from the same source queries each week, keep the reconciliation checks, and only send you the figures that fail them. The first run still needs a side-by-side check against your manual version."
+## Example ladder
+
+Request: *"Every Monday I text each no-show patient one by one to rebook. Takes 2 hours. Write the text."*
+
+1. > "Write the text with merge fields for name, missed date and a booking link, so I can send it to everyone in one go from our practice software."
+2. > "Write a weekly routine: export last week's no-shows, generate a personalised text for each, and give me one list to approve and send in under 10 minutes."
+3. > "Set this up so no-shows get a friendly rebooking text automatically the morning after, and I only see the people who reply with a question."
+
+*Needs:* the practice software's export or texting feature. *Check:* Monday time spent, and rebooking rate before vs. after.
 
 ## Common mistakes
 
 | Mistake | Instead |
 |---|---|
-| Assuming "faster model" is the fix | Ask whether the cost is attention or waiting |
-| Dropping a quality check to save time | Keep the checks; automate them |
-| Building automation for a step that could be removed | Ask whether the step is still needed |
-| Suggesting something that adds work, not removes it | Check the idea actually shortens the remaining work (e.g. one parametrised template for the other 39 functions) |
-| Appending an evaluation plan to the suggestion | Explain evaluation only if the user asks how it would work |
+| Reducing the problem instead of the time (fewer no-shows) | That's Altitude; good, but label the rung for what it is |
+| Skipping checks to go faster | Keep the checks; automate them |
+| Promising a time saving | Give it as an estimate |
 
 ## What the article says
 

@@ -1,49 +1,48 @@
-# Range: borrow a concrete technique from another field
+# Range: ask for methods from other fields
 
-**Use when** the usual approach keeps failing the same way, or the task's surface discipline is too narrow for what it's really trying to do.
+**Fits when** the usual approach keeps failing the same way, or the task's surface discipline is too narrow for what it's really trying to do.
 
-## How to apply it
+## How to build the ladder
 
-1. **Replace the noun with a verb.** An onboarding guide isn't "a document". It's "getting a new user to their first success without help". Saving articles isn't "a bookmark list". It's "remembering an idea at the moment you start relevant work". The verb shows which fields have something to offer.
-2. **Find where it breaks down.** "How have you approached this so far, and where does it fall short?" Reuse answers already given.
-3. **Pick the field and the technique yourself, and name both.** The user shouldn't have to invent the cross-disciplinary link. Say where the technique comes from ("a backtest, borrowed from finance"; "a cognitive walkthrough, from interaction design"). The borrowed origin is what makes it Range, and it helps the user find more of that field's tools later. Introduce it in one or two sentences, then ask how it could fit.
-4. **Borrow methods, not costumes.** Don't ask the model to be a short seller. Do what a short seller does to research a position. Role-play makes the transcript stranger without improving the result.
+The essay gives two techniques:
 
-**Automation is not Range.** A spreadsheet formula, a reminder bot or a form are useful, but they're not borrowed from another field. Range means a *named* technique with a recognisable origin: poka-yoke (mistake-proofing, from lean manufacturing), on-call rotations and overbooking buffers (hospitals, airlines), think-pair-share (pedagogy), checklists (aviation, surgery), red-flag clause lists (legal due diligence). If you can't name the field, it probably isn't Range; consider whether Speed fits better.
+1. **Replace the noun with a verb.** A quarterly review isn't "a deck"; it's *"getting busy people to believe a story about cause and effect, and to decide under uncertainty, in 30 minutes."* The verb tells you which fields have something to offer.
+2. **Assemble the crew.** "The deck needs to be amazing, otherwise aliens will blow up Earth. What kind of team will humanity get together?" For the QBR: an analyst, a journalist, an editor; a motion and audio designer; a red team of a short seller and a forensic accountant.
+
+Then turn that into rungs:
+
+- **Rung 1: one borrowed method**, named with its field: "Run a cognitive walkthrough (from interaction design) on every screen of the guide."
+- **Rung 2: two or three fields combined**, each doing what it does best.
+- **Top rung: the full crew**, working in parallel (subagents if the user's tool supports them), each producing a real artifact, plus a red team that tries to break the result.
+
+**Borrow methods, never costumes.** The essay: "Don't ask the model to write a short seller, ask it to do what a short seller does to research their position." Each crew member's line in the prompt names what they *do*, not who they *are*.
+
+## Example top rung
+
+Request: *"Riders keep standing at the closed bus stop. Write a better notice."* As a verb: *"redirect people who aren't reading, in the few seconds they're standing there."*
+
+> "Treat the closed stop as a wayfinding problem. Use what airport signage designers do (one message, visible from 30 m, arrow plus distance), what behavioural scientists do (put the cue where the decision happens: on the pole, at eye level, at the old stop), and what UX researchers do (watch five riders arrive and note where they look). Give me the notice, a placement plan, and a 2-day test to see if fewer people wait at the wrong stop."
+
+*Needs:* nothing beyond a phone camera and the stop. *Check:* count riders waiting at the closed stop before and after.
 
 ## Example borrowings
 
-| Problem as a verb | Field | Technique |
+| Problem as a verb | Field | Method |
 |---|---|---|
-| Getting users through a flow without confusion | Human–computer interaction | Cognitive walkthrough of each decision point |
-| Remembering ideas when they matter | Learning design | Task-linked cues and retrieval questions at the start of work |
-| Making busy people believe a cause-and-effect story | Journalism / editing | Inverted pyramid; lead with the change and its cause |
-| Finding where a plan is wrong | Finance / forensics | Short-seller or forensic-accountant red-team analysis |
-| Combining conflicting advice | Research synthesis | Group by method, then check whether disagreement reflects different contexts |
-| Covering shifts despite no-shows and swaps | Hospital / airline operations | On-call standby rotation; overbooking buffer sized from past no-show rate |
-| Catching risky terms in documents | Legal due diligence / aviation | Red-flag clause checklist reviewed every time, like a pre-flight checklist |
-| Preventing the same human error | Lean manufacturing | Poka-yoke: a step that makes the mistake impossible or obvious (e.g. scan-to-confirm) |
-| Getting everyone to speak, not just a few | Pedagogy / facilitation | Think-pair-share; cold-calling with wait time |
-
-These are illustrations, not proof that a technique works for this task.
-
-## Good suggestion shape
-
-> "Before rewriting the guide again, we could run a cognitive walkthrough, a usability technique: step through each screen asking 'will the user know what to do here, and will they know it worked?'. That usually finds the exact decision points where people get lost. It finds likely problems; only real users confirm them."
-
-## When combining several sources
-
-Compare their underlying advice rather than listing titles. Group similar views, check whether apparent disagreement reflects different circumstances, and ask the question that decides which fits: "Some of these say prototype early, others say research first. What's less clear here: whether you can build it, or whether people want it?" Keep attribution, and don't treat repeated claims as independent confirmation.
+| Get people through a flow without confusion | Interaction design | Cognitive walkthrough |
+| Remember ideas when they matter | Learning science | Retrieval practice; task-linked cues |
+| Hand over fragile cases between shifts | Nursing / aviation | SBAR handoff (situation, background, assessment, recommendation); read-back |
+| Cover shifts despite no-shows | Hospitals / airlines | Standby rota; overbooking buffer sized from past no-shows |
+| Prevent the same human error | Lean manufacturing | Poka-yoke: make the mistake impossible or obvious |
+| Find where a plan is wrong | Finance | Short-seller or forensic-accountant analysis |
 
 ## Common mistakes
 
 | Mistake | Instead |
 |---|---|
-| "Imagine a panel of experts…" | Name one technique and what it does |
-| Asking the user which field to borrow from | Propose one; ask how it fits |
-| A lecture on the borrowed field | One or two sentences, then a question |
-| Claiming a model simulation proves real user behavior | Say what it finds and what still needs real users |
-| Using a borrowed technique without saying where it's from | Name the field: "a backtest, borrowed from finance" |
+| "Imagine a panel of experts…" | Name what each field *does* and the artifact it produces |
+| A borrowed idea with no named field | Name the field: "a standby rota, as hospitals use" |
+| Generic automation presented as Range | Automation isn't a borrowed method; consider Speed |
 
 ## What the article says
 

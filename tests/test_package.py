@@ -92,7 +92,7 @@ class PackageTests(unittest.TestCase):
     def test_reference_structure(self):
         for p in PILLARS:
             text = (ROOT / "references" / f"{p}.md").read_text()
-            for section in ("## How to apply it", "## Common mistakes", "## What the article says"):
+            for section in ("## How to build the ladder", "## Common mistakes", "## What the article says"):
                 self.assertIn(section, text, f"{p}.md missing {section}")
             self.assertIn("felixrieseberg.com", text)
             self.assertIn("source-notice.md", text)

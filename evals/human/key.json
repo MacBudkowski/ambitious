@@ -1,0 +1,16 @@
+{
+  "build_id": "589f22046f73",
+  "seed": 20261016,
+  "prompts": {
+    "ex-01": {
+      "A": "skill-v1",
+      "B": "plain-rewriter",
+      "C": "baseline"
+    },
+    "ex-02": {
+      "A": "plain-rewriter",
+      "B": "baseline",
+      "C": "skill-v1"
+    }
+  }
+}

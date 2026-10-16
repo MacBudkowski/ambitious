@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ex-01",
+    "prompt": "Help me plan a weekend project: a small script that renames my vacation photos by date.",
+    "source": "example",
+    "candidates": {
+      "baseline": "Sure! Here's a simple plan:\n\n1. List the files in the folder\n2. Read each photo's **EXIF date**\n3. Rename to `YYYY-MM-DD_HHMMSS.jpg`\n\n```python\nfrom pathlib import Path\nfor p in Path('.').glob('*.jpg'):\n    print(p)\n```",
+      "skill-v1": "## Aim a bit higher\n\nRenaming is a fine start, but you could build a *tiny photo librarian* in the same weekend:\n\n- Rename by date **and** place (reverse-geocode GPS)\n- Detect duplicates with a perceptual hash\n- Generate a one-page HTML album per trip\n\nStart with renaming on Saturday morning; add the album if it goes well. See [Pillow docs](https://pillow.readthedocs.io/).",
+      "plain-rewriter": "You want a script that renames vacation photos by date. Steps:\n\n- read the date\n- rename the file\n- test on a copy first\n\n> Tip: always keep a backup."
+    }
+  },
+  {
+    "id": "ex-02",
+    "prompt": "I want to write a blog post about learning to cook this year.",
+    "source": "example",
+    "candidates": {
+      "baseline": "Great idea. Outline:\n\n1. Why you started\n2. Three dishes you mastered\n3. Mistakes\n4. What's next",
+      "skill-v1": "What if this became a **12-post series** instead — one dish per month, each with a story, a photo, and a cost breakdown? You'd end the year with a small e-book.\n\n### First post\n- Hook: the worst meal you made in January\n- Promise: what readers will cook by December",
+      "plain-rewriter": "Write a short post covering *why* you started cooking, what you learned, and your favourite recipe. Keep it under 800 words."
+    }
+  }
+]

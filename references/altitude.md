@@ -1,35 +1,41 @@
-# Altitude: aim at the outcome behind the task
+# Altitude: ask for the outcome, not the task
 
-**Use when** the request is the user's best guess at a step toward something larger: the task recurs, it exists to support a decision or meeting, or fixing one instance leaves the underlying problem in place.
+**Fits when** the request is the user's best guess at a step toward something larger: the task recurs, it feeds a decision or a meeting, or fixing one instance leaves the problem in place.
 
-## How to apply it
+## How to build the ladder
 
-1. **Find the goal beyond the goal.** "What do you want to happen after this is done?" or "What will this let you decide?"
-2. **Find the recurring burden.** "After this fix, what would you still have to keep doing yourself?"
-3. **Raise the target one level.** Move from one fix to preventing the problem class, from a report to the decision it serves, or from one-off tasks to a durable workflow that needs the user less often.
-4. **Recurrence is the strongest signal.** "Third time this month", "again", "every quarter": fix the instance, then add one sentence about removing the class of problem (a suite-wide policy, a prevention check, a process change). Skipping it entirely is the most common Altitude miss.
-5. **Name what the higher level needs.** Durable workflows usually need access and tooling: crash reports, version-to-commit mapping, test machines, data connectors. Say so briefly. It's often the real work.
+The essay's own example is a ladder. For a quarterly business review deck, it climbs from "fill in the template" to:
 
-A useful tell from the article: if there will be meetings about the work, Altitude is probably worth considering.
+1. *Understand it:* "Tell me what changed this quarter, why, and what we should do about it." (give the model all the data, not just the template numbers)
+2. *Decide:* "Work out which three decisions are most urgent… and start working on potential directions with for/against arguments."
+3. *Replace the task with the outcome:* "The review exists so leadership catches problems early and moves money and people to the right places. Design a better way to do that than a quarterly deck, show from our own history that it would have caught things sooner, and run it beside the current one for a quarter."
 
-## Good suggestion shape
+Build yours the same way:
 
-> "Rather than a better weekly budget deck, you could aim for leaders hearing about overspend the week it starts: an exception alert from the same data, checked against last year's history to see whether it would have caught past problems sooner. It would replace a format people know, so it's worth trying alongside the deck first."
+- **Find the goal beyond the goal.** "What do you want to happen after this is done?" "What will this let you decide?" If there will be meetings about the work, there's usually a higher goal.
+- **Rung 1: understand.** Ask the model to explain what's really going on, with full data.
+- **Rung 2: decide or prevent.** Ask for the decision the work serves, or for removing the cause of a recurring problem.
+- **Top rung: own the outcome.** Ask the model to keep the outcome true over time ("keep our apps crash-free"), or to design something better than the original deliverable, prove it against history, and run it alongside the old way.
+- **Name what the top rung needs.** Durable workflows need plumbing: Felix first had to give Claude crash reports, a version-to-commit map, and Windows, macOS and Linux machines. That setup is often the real first step; say so.
+
+## Example top rung
+
+> "Our tenants keep reporting the same steam-heat problems. Look at every heating complaint across our 3 buildings since October, find the pattern, propose a maintenance schedule that would have prevented most of them, and draft the case for it to the owner."
+> *Needs:* the complaint log and maintenance records. *Check:* complaint count next winter versus this winter.
 
 ## Limits
 
-- **Creative work.** Altitude works best when there's a real outcome to serve. For a poem or a personal piece, the work *is* the outcome. Don't swap it for a business goal.
-- **No guarantees.** "Keep the plugin compatible with future releases" is a direction, not a promise. Unknown breaking changes still need a fallback.
-- **Approval before replacing the deliverable.** Suggesting a different deliverable is fine. Building it instead of the one requested is not.
+- **Creative work.** For a poem or a personal piece, the work *is* the outcome. Don't offer Altitude there.
+- **No guarantees.** "Keep it crash-free" is a direction, not a promise. Say which failures would still need a human.
+- **Today's task still matters.** The ladder is an offer; the original request still gets done unless the user picks a rung instead.
 
 ## Common mistakes
 
 | Mistake | Instead |
 |---|---|
-| Inflating every task into strategy | Only raise altitude when the user's real goal is higher |
-| "Just automate the whole thing" | Name the specific outcome and what access it needs |
-| Promising the higher outcome will work | State the main dependency or uncertainty |
-| Making the recurring work faster (templates, macros, auto-replies) | That's Speed. Altitude asks why the work keeps arising and addresses the source |
+| Top rung is a template or macro for the same task | That's Speed. Altitude removes the reason the task exists |
+| "Just automate everything" | Name the outcome and the access it needs |
+| Generic strategy talk | Use the user's own numbers, systems and names |
 
 ## What the article says
 
