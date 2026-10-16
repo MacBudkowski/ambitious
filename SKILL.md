@@ -26,7 +26,15 @@ Don't offer it for quick questions, small edits, urgent incidents, explicitly na
 
 Reply in this shape:
 
-**1. The goal behind the goal** (one line). What do they want to happen *after* this task is done? Use their words. If you're not sure, state your best guess and add "tell me if it's something else". Then carry on with the ladder. Only stop to ask first if two guesses would lead to completely different ladders.
+**1. The goal behind the goal** (one line). What do they want to happen *after* this task is done? Use their words.
+
+If the goal is unclear and the answer would change the ladder, ask one question first, and make it obvious the pass has started, so a short question doesn't look like a dead end:
+
+> "Let's aim higher with this. First, one question so the bolder versions fit: what do you most want the launch to achieve: people using it, feedback, or visibility?"
+
+Offer 2–4 likely answers so they can reply in a word. Then stop and wait. When they answer, go straight to the ladder without re-asking.
+
+If the goal is reasonably clear, skip the question: state it in one line and go on.
 
 **2. A ladder of 2–3 bolder asks.** Each rung is a prompt the user could copy and send, written in their voice, climbing in ambition. Pick the one or two types that fit this task best (table below); don't force all four.
 
