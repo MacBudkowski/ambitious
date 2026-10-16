@@ -10,7 +10,7 @@ Ambitious shows you **bolder versions of your own request**, as prompts you can 
 
 ## What it looks like
 
-> **You:** /ambitious I need my plugin to work with the new host release. Honestly I'm tired of fixing this every release.
+> **You:** ambitious I need my plugin to work with the new host release. Honestly I'm tired of fixing this every release.
 >
 > **Agent:** **The goal behind the goal:** You want your plugin to survive host releases without another repair job landing on you.
 >
@@ -18,30 +18,21 @@ Ambitious shows you **bolder versions of your own request**, as prompts you can 
 >
 > > "Get my plugin working with the new host release. Compare this failure with previous compatibility fixes, identify what keeps breaking, and add tests that reproduce those failures."
 >
-> *Needs:* Plugin source, old and new host versions, previous fixes or bug reports.
-> *Check:* Tests reproduce the failures before the fix; the plugin's affected features work in the actual new host afterward.
->
 > **2. Make host upgrades a tested event, not a repair project**
 >
 > > "Stop patching host-version assumptions throughout my plugin. Use our history of breakages to design a small compatibility boundary, migrate the affected code, and test it against supported host versions and available prereleases. Show that the checks would have caught our previous failures."
->
-> *Needs:* Repository history, runnable host versions, a defined support range, and CI access.
-> *Check:* Historical failures are caught by the tests; real-host checks pass across the supported versions.
 >
 > **3. Take release compatibility off my plate**
 >
 > > "Build a compatibility-maintenance workflow for my plugin: detect new host releases and prereleases, run realistic plugin checks, reproduce regressions, and prepare tested fixes before users hit them. Bring me only decisions that require changing plugin behavior or dropping support. Prove it against past breaking releases, then run it alongside my current process for one release cycle."
 >
-> *Needs:* Release feeds, repeatable host test environments, CI and repository access, plus an agreed automation budget and approval boundaries.
-> *Check:* Replay past releases to measure which breakages it catches; during the live cycle, track missed regressions and how often you still have to intervene.
->
 > Pick one and I'll start, or keep the original.
 
-A real reply from a live test of the current skill.
+A real reply from a live test of the current skill. In actual replies, each prompt also notes what it needs (access, data, tools) and how you'd know it worked.
 
 ## How it works
 
-1. **You ask for it** (`/ambitious`, "think bigger", "how could I be more ambitious with this"), or the agent offers once, in one line, when you're planning something substantial.
+1. **You ask for it:** start your message with `ambitious`, or say "think bigger" or "how could I be more ambitious with this". (Agents with slash commands also accept `/ambitious`.) Or the agent offers once, in one line, when you're planning something substantial.
 2. **It asks a few questions** if the goal, audience or limits are unclear, so the bolder versions fit what you actually want.
 3. **It shows the ladder:** the goal behind your goal, then 2–3 ready-to-send prompts, each clearly bigger than the last. Each says what it needs (access, data, tools) and how you'd know it worked (an outside check, not the model grading itself). When a real precedent fits, it cites one: "someone already did this".
 4. **You pick.** It doesn't do the task until you choose. No draft, no critique of your idea, just bolder options.

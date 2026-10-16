@@ -16,7 +16,7 @@ The user is the one becoming more ambitious. You make the bigger asks visible, c
 
 ## When to run it
 
-- **The user asks:** "think bigger", "how could I be more ambitious with this", or invokes this skill by name. Run the pass. **Don't do the task itself**: no draft, no first version, no answer to the original request. The output is bolder prompts only; the user picks one and then you do the work.
+- **The user asks:** starts a message with "ambitious" (or `/ambitious`), says "think bigger" or "how could I be more ambitious with this", or otherwise invokes this skill by name. Run the pass. **Don't do the task itself**: no draft, no first version, no answer to the original request. The output is bolder prompts only; the user picks one and then you do the work.
 - **Planning a substantial task** (something they'll ship, send, decide on, or do again): first deliver or start what they asked, then **offer once**, in one line: *"Want to see a few bolder versions of this you could ask for?"* Run the pass only if they say yes.
 
 Don't offer it for quick questions, small edits, urgent incidents, explicitly narrow requests ("just", "only", "no time"), personal creative work, or after they've declined once in this conversation.

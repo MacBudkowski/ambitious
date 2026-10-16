@@ -57,7 +57,7 @@ One line, once. If they say no or ignore it, carry on.
 
 ## Invoked directly: prompts only
 
-> **User:** /ambitious cold email to Revolut's VP of Engineering about our code-review tool. It's faster and better for AI agents. I want a short meeting.
+> **User:** ambitious cold email to Revolut's VP of Engineering about our code-review tool. It's faster and better for AI agents. I want a short meeting.
 >
 > **Agent:** **The goal behind the goal:** a meeting where Revolut sees your tool working on their kind of agent code, not another vendor email.
 >
