@@ -52,7 +52,7 @@ def skill_system() -> str:
     return "\n".join(parts)
 
 
-def chat(model: str, system: str, user: str, max_tokens: int = 1200, temperature: float = 0.7) -> str:
+def chat(model: str, system: str, user: str, max_tokens: int = 4000, temperature: float = 0.7) -> str:
     base = os.environ.get("EVAL_BASE_URL", "http://127.0.0.1:8317/v1").rstrip("/")
     body = json.dumps({
         "model": model,
@@ -65,18 +65,21 @@ def chat(model: str, system: str, user: str, max_tokens: int = 1200, temperature
     if key:
         headers["Authorization"] = f"Bearer {key}"
     last = None
-    for attempt in range(4):
+    for attempt in range(6):
         try:
             req = urllib.request.Request(base + "/chat/completions", data=body, headers=headers)
             with urllib.request.urlopen(req, timeout=180) as r:
                 data = json.load(r)
-            content = data["choices"][0]["message"]["content"] or ""
+            choice = data["choices"][0]
+            content = choice["message"]["content"] or ""
+            if choice.get("finish_reason") == "length":
+                raise ValueError("completion truncated at max_tokens")
             if not content.strip():
                 raise ValueError("empty completion")
             return content
         except Exception as e:  # network / rate limit: back off and retry
             last = e
-            time.sleep(2 ** attempt * 2)
+            time.sleep(min(60, 2 ** attempt * 3))
     raise RuntimeError(f"chat failed after retries: {last}")
 
 
@@ -200,7 +203,7 @@ def to_markdown(summary: dict) -> str:
         "# Evaluation summary", "",
         f"- Date: {m['date']}",
         f"- Subject model: `{m['subject']}` · Judge model: `{m['judge']}`",
-        f"- Scenarios: {m['scenarios']} · Reps: {m['reps']} · Subject calls: {m['subject_calls']}",
+        f"- Scenario file: `{m.get('scenario_file', 'scenarios.json')}` · Scenarios: {m['scenarios']} · Reps: {m['reps']} · Subject calls: {m['subject_calls']}",
         "", "| Group | Cases | Criteria passed (baseline → skill) | All criteria met (baseline → skill) | Usefulness 1–5 (baseline → skill) | Head-to-head (skill / baseline / tie) |",
         "|---|---|---|---|---|---|",
     ]
@@ -221,13 +224,17 @@ def main() -> int:
     ap.add_argument("--reps", type=int, default=1)
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--only", default="")
+    ap.add_argument("--scenarios", default=str(ROOT / "evals" / "scenarios.json"),
+                    help="scenario file (e.g. evals/holdout.json for the independent set)")
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--resume", action="store_true",
+                    help="keep completed cases in OUT/raw.jsonl and run only the missing ones")
     ap.add_argument("--out", default=str(ROOT / "evals" / "results" / "latest"))
     args = ap.parse_args()
 
     subject = os.environ.get("EVAL_SUBJECT_MODEL", "claude-sonnet-5-5")
     judge = os.environ.get("EVAL_JUDGE_MODEL", "claude-opus-5-5")
-    scenarios = json.loads((ROOT / "evals" / "scenarios.json").read_text())
+    scenarios = json.loads(Path(args.scenarios).read_text())
     if args.only:
         wanted = set(args.only.split(","))
         scenarios = [s for s in scenarios if s["id"] in wanted]
@@ -235,9 +242,14 @@ def main() -> int:
     out.mkdir(parents=True, exist_ok=True)
     sys_skill = skill_system()
 
-    jobs = [(s, r) for s in scenarios for r in range(args.reps)]
     rows, failures = [], []
-    with cf.ThreadPoolExecutor(max_workers=args.workers) as ex, open(out / "raw.jsonl", "w") as raw:
+    raw_path = out / "raw.jsonl"
+    if args.resume and raw_path.exists():
+        rows = [json.loads(l) for l in raw_path.read_text().splitlines() if l.strip()]
+    done_keys = {(r["id"], r["rep"]) for r in rows}
+    jobs = [(s, r) for s in scenarios for r in range(args.reps) if (s["id"], r) not in done_keys]
+    print(f"{len(rows)} cases already done, {len(jobs)} to run", flush=True)
+    with cf.ThreadPoolExecutor(max_workers=args.workers) as ex, open(raw_path, "a" if args.resume else "w") as raw:
         futs = {ex.submit(run_case, s, r, subject, judge, sys_skill, args.seed): (s["id"], r) for s, r in jobs}
         for f in cf.as_completed(futs):
             cid, rep = futs[f]
@@ -253,6 +265,7 @@ def main() -> int:
 
     rows.sort(key=lambda r: (r["pillar"], r["id"], r["rep"]))
     meta = {"date": time.strftime("%Y-%m-%d"), "subject": subject, "judge": judge,
+            "scenario_file": Path(args.scenarios).name,
             "scenarios": len(scenarios), "reps": args.reps, "subject_calls": 2 * len(rows),
             "failures": failures}
     summary = summarize(rows, meta)

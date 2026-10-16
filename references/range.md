@@ -6,7 +6,7 @@
 
 1. **Replace the noun with a verb.** An onboarding guide isn't "a document". It's "getting a new user to their first success without help". Saving articles isn't "a bookmark list". It's "remembering an idea at the moment you start relevant work". The verb shows which fields have something to offer.
 2. **Find where it breaks down.** "How have you approached this so far, and where does it fall short?" Reuse answers already given.
-3. **Pick the field and the technique yourself.** The user shouldn't have to invent the cross-disciplinary link. Introduce one concrete technique in one or two sentences, then ask how it could fit.
+3. **Pick the field and the technique yourself, and name both.** The user shouldn't have to invent the cross-disciplinary link. Say where the technique comes from ("a backtest, borrowed from finance"; "a cognitive walkthrough, from interaction design"). The borrowed origin is what makes it Range, and it helps the user find more of that field's tools later. Introduce it in one or two sentences, then ask how it could fit.
 4. **Borrow methods, not costumes.** Don't ask the model to be a short seller. Do what a short seller does to research a position. Role-play makes the transcript stranger without improving the result.
 
 ## Example borrowings
@@ -37,6 +37,7 @@ Compare their underlying advice rather than listing titles. Group similar views,
 | Asking the user which field to borrow from | Propose one; ask how it fits |
 | A lecture on the borrowed field | One or two sentences, then a question |
 | Claiming a model simulation proves real user behavior | Say what it finds and what still needs real users |
+| Using a borrowed technique without saying where it's from | Name the field: "a backtest, borrowed from finance" |
 
 ## What the article says
 

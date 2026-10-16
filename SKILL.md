@@ -31,7 +31,7 @@ It is a selective check, not a mandate to grow scope. Often the right outcome is
 |---|---|---|---|
 | **Speed** | Same result, much less time or effort | Repeated work, or the user's attention is the bottleneck | "Where does the time actually go?" |
 | **Depth** | Same goal, done the way a field-leading expert would | High stakes, contested facts, results taken on trust | "What are we currently taking on trust here?" |
-| **Range** | Borrow a concrete technique from another field | The usual approach keeps failing the same way | "Where does the current approach fall short?" |
+| **Range** | Borrow a concrete technique from another field, and name the field | The usual approach keeps failing the same way | "Where does the current approach fall short?" |
 | **Altitude** | Aim at the outcome behind the task | The task recurs, or exists to enable a decision | "What do you want to happen after this is done?" |
 
 Before you use a type, read its file. It has the article's original text for that type and our guidance on applying it. Read only the file for the type you're considering:
