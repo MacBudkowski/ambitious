@@ -37,6 +37,7 @@ If the user doesn't know the field, explain a method in a sentence or two before
 
 | Mistake | Instead |
 |---|---|
+| Listing several checks at once | Pick the single check that most reduces the important uncertainty |
 | Reducing Depth to "let's validate it" | Consider instruments, targets, assumptions, and discovery too |
 | Expert role-play ("as a senior data scientist…") | Change the actual method and tools |
 | Asking the user which statistical method they want | Propose one and explain it briefly |

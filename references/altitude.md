@@ -29,6 +29,7 @@ A useful tell from the article: if there will be meetings about the work, Altitu
 | Inflating every task into strategy | Only raise altitude when the user's real goal is higher |
 | "Just automate the whole thing" | Name the specific outcome and what access it needs |
 | Promising the higher outcome will work | State the main dependency or uncertainty |
+| Making the recurring work faster (templates, macros, auto-replies) | That's Speed. Altitude asks why the work keeps arising and addresses the source |
 
 ## What the article says
 
