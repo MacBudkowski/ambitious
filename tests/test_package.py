@@ -1,6 +1,6 @@
 """Structural checks for the ambitious package (stdlib only).
 
-These verify packaging, not model behavior; see evals/ for behavior.
+These verify packaging, not model behavior.
 """
 from __future__ import annotations
 
@@ -43,8 +43,7 @@ def verbatim_block(text: str) -> str:
 class PackageTests(unittest.TestCase):
     def test_required_files(self):
         for name in ["SKILL.md", "README.md", "LICENSE", "CHANGELOG.md",
-                     "references/examples.md", "references/source-notice.md",
-                     "evals/scenarios.json", "evals/run_eval.py",
+                     "references/examples.md", "references/source-notice.md", "references/precedents.md",
                      *[f"references/{p}.md" for p in PILLARS]]:
             self.assertTrue((ROOT / name).is_file(), name)
 
@@ -107,19 +106,6 @@ class PackageTests(unittest.TestCase):
             first = block.split("\n", 1)[0]
             if p != "speed":
                 self.assertEqual(first, p.capitalize(), f"{p}.md quotes the wrong section")
-
-    def test_scenarios(self):
-        cases = json.loads((ROOT / "evals" / "scenarios.json").read_text())
-        ids = [c["id"] for c in cases]
-        self.assertEqual(len(ids), len(set(ids)), "duplicate scenario ids")
-        counts = {}
-        for c in cases:
-            self.assertTrue(c["prompt"].strip())
-            self.assertGreaterEqual(len(c["pass_criteria"]), 2, c["id"])
-            counts[c["pillar"]] = counts.get(c["pillar"], 0) + 1
-        for p in PILLARS:
-            self.assertGreaterEqual(counts.get(p, 0), 3, f"need 3+ {p} scenarios")
-        self.assertGreaterEqual(counts.get("guardrail", 0), 4, "need 4+ guardrail scenarios")
 
     def test_no_machine_specific_content(self):
         for path in ROOT.rglob("*"):

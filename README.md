@@ -82,13 +82,12 @@ references/
   examples.md          Full example passes, and when not to offer
   precedents.md        20 real, sourced cases of ambitious work with AI
   source-notice.md     Rights and attribution for the quoted essay text
-evals/                 Earlier automated evaluation and a blind-ranking page
 tests/test_package.py  Structural checks (files, links, frontmatter, quote integrity)
 ```
 
 ## How it was built
 
-This skill went through two designs. The first (git tag `v1.0.0-suggest`) had the agent add one short suggestion after answering; it tested well against an automated judge but felt timid in real use. An independent review pointed out why: the judge rewarded restraint, and the essay is about *you* asking for more, not the agent adding a tip. The current design came from trying it by hand on real tasks and adjusting after each try. The earlier evaluation data is kept in `evals/` for reference.
+This skill went through two designs. The first (git tag `v1.0.0-suggest`) had the agent add one short suggestion after answering; it tested well against an automated judge but felt timid in real use. An independent review pointed out why: the judge rewarded restraint, and the essay is about *you* asking for more, not the agent adding a tip. The current design came from trying it by hand on real tasks and adjusting after each try. The earlier evaluation harness and results are in the git history under that tag.
 
 ## Credits
 
