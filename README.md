@@ -1,6 +1,6 @@
 # Ambitious
 
-**An agent skill that helps you ask AI for more than you would have thought to.**
+**Ask AI for more.**
 
 *(Based on Felix Rieseberg's essay [How to be more ambitious: A tutorial for humans with models](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/))*
 
