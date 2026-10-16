@@ -10,18 +10,27 @@ Ambitious shows you **bolder versions of your own request**, as prompts you can 
 
 ## What it looks like
 
-> **You:** /ambitious cold email to Revolut's VP of Engineering about our code-review tool. It's faster and better for AI agents. I want a short meeting.
+> **You:** /ambitious I need my plugin to work with the new host release. Honestly I'm tired of fixing this every release.
 >
-> **Agent:** **The goal behind the goal:** a meeting where Revolut sees your tool working on their kind of agent code, not another vendor email.
+> **Agent:** **The goal behind the goal:** you want the plugin to keep working when the host ships, without you spending time on every release.
 >
-> 1. > "Research Revolut's public engineering blog, talks and job posts for how they use AI coding agents, then write a 90-word email to their VP of Engineering that opens with one real, cited observation and asks for 15 minutes."
->    *Needs:* web access, one proof point. *Check:* every claim about Revolut links to a source.
-> 2. > "Run our tool and a standard reviewer on 50 agent-generated pull requests from public fintech repos, measure review time and real bugs caught, and write the email around that one striking number."
->    *Needs:* the tool, a sandbox, public repos. *Check:* bugs confirmed by a human reviewer, not the tool.
-> 3. > "Publish an open benchmark of code review for AI-agent pull requests, with a personalised run on a Revolut open-source repo, then design a 30-account outreach sequence led by that benchmark."
->    *Needs:* the tool, compute, a target list. *Check:* meeting rate per 30 sends vs. current outreach.
+> 1. > "Look at the last few host releases and what broke in the plugin each time. Find what they have in common, fix the break in the new release, and add compatibility tests that would have caught every one of those past breaks."
 >
-> Pick one and I'll start, or keep the original.
+>    *Needs:* repo access, past host changelogs, older host builds. *Check:* each past break is reproduced by a test that fails on the old code and passes on the fix.
+>
+> 2. > "List every host API, hook and config format the plugin depends on. Move them behind one adapter layer, then set up CI that runs the plugin against the last 3 host releases plus the pre-release build."
+>
+>    *Needs:* installable host builds, a CI runner. *Check:* re-introduce a past API change and CI goes red.
+>
+> 3. > "Keep the plugin compatible with the host. Check for new releases and pre-releases daily, run the plugin against them, and when something breaks, reproduce it, open a PR with a fix and a test, and tell me only when it needs a decision."
+>
+>    *Needs:* a release feed, CI, permission to open PRs (not merge them). Setting this up is the real first step. *Check:* host releases that break users, trending to zero.
+>
+> Felix Rieseberg went from asking Claude to fix individual crashes to asking it to keep his apps crash-free. Rung 3 is the same move for compatibility.
+>
+> Pick one and I'll start, or keep the original and fix just this release.
+
+A real reply from the current skill (lightly trimmed).
 
 ## How it works
 
