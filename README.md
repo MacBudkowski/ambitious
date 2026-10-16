@@ -53,7 +53,7 @@ From the essay:
 | Type | The bolder ask | Example |
 |---|---|---|
 | **Altitude** | Ask for the outcome, not the task | Stop fixing crashes one by one; ask for the app to stay crash-free |
-| **Depth** | Ask for it done the way the best in the field would | Test "churn is an onboarding problem" against raw logs; set a 200 ms target instead of 5 s |
+| **Depth** | Ask for it done the way the best in the field would | Before spending a quarter fixing what "everyone knows" is the problem, have the model check that belief against the actual data |
 | **Range** | Ask for methods from other fields | Fix a confusing sign-up page by borrowing how airports use signs to guide strangers who don't read instructions |
 | **Speed** | Ask for the same result in a fraction of the time | A 2-hour Monday chore that runs itself, with the same checks |
 
