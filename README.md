@@ -1,59 +1,115 @@
-# Ambition Check
+# Stay Ambitious
 
-A portable AI-agent skill for choosing the right kind of ambition **for the task**: Speed, Depth, Range, or Altitude.
+**An agent skill that helps you ask AI for more than you would have thought to.**
 
-It helps an agent ask a short, relevant mini-interview, expose meaningful tradeoffs, and propose a stronger approach without automatically inflating scope. It can also decide that the original task is already right.
+Most people ask a model for the task in front of them: fix this crash, make this deck, rewrite this guide. They rarely ask for what they actually want, such as an app that stays crash-free, leaders who catch problems early, or users who stop getting lost. That's usually not because it's impossible. It's because nobody suggested it.
 
-## What it does
+Stay Ambitious teaches your agent to notice those moments, ask one or two good questions, and offer **one concrete, more ambitious possibility**. Then it stops and lets you decide. It doesn't make every task bigger, and it stays quiet when a task should simply be done.
 
-1. Read context and identify what limits the value of the task.
-2. Ask only missing questions (usually 2–3, not a mandatory form).
-3. Recommend one direction, or contrast two when the tradeoff is unresolved.
-4. Suggest a concrete possibility, briefly name its type, and flag any major caveat.
-5. Let the user react. Planning and execution come later, if requested.
+## What it looks like
 
-No API keys, background services, model-specific features, or additional agents are required. The procedure is portable; discovery and automatic loading depend on your agent host. Compatibility with other hosts has not been runtime-tested.
+> **You:** I need my plugin to work with the new host release. Honestly I'm tired of fixing this every release.
+>
+> **Without the skill:** a five-step general guide to plugin compatibility (adapter layer, public APIs, feature detection, CI, version ranges…).
+>
+> **With the skill:** "Since you want to stop fixing this every release, you could aim for the plugin to stay compatible on its own: a small contract test suite for exactly the host APIs your plugin depends on, run automatically against the host's beta builds, so a breaking change shows up as a failing test before the release ships. That's **Altitude** ambition: going after the outcome behind the task (a plugin that keeps working) rather than the individual fix. It depends on the host publishing pre-release builds. Want me to start with the fix for this release?"
 
-## Install in Hermes
+Both are real responses from the [evaluation](#does-it-work) (lightly trimmed).
 
-Copy this directory into `<active-profile-home>/skills/ambition-check/`. Use the active profile, not another profile's directory. Start a new session for reliable discovery. You can invoke `/ambition-check` explicitly.
+## Four kinds of ambition
 
-For selective automatic use, add this trigger to your existing standing instructions:
+Based on Felix Rieseberg's essay [*How to be more ambitious: A tutorial for humans with models*](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/):
 
-> Before agreeing scope for substantial work, load `ambition-check` and assess whether Speed, Depth, Range, or Altitude would materially improve the result. Follow its task-specific interview and approval process when useful. Skip trivial, urgent, explicitly narrow, and already-agreed tasks unless explicitly asked to reconsider them.
+| Type | The shift | Example |
+|---|---|---|
+| **Speed** | Same result, much less time or effort | A day-long weekly report becomes an hour, with the same checks |
+| **Depth** | Same goal, done the way a field-leading expert would | Test "churn is an onboarding problem" against raw logs before spending a quarter on it |
+| **Range** | Borrow a concrete technique from another field | Run a usability *cognitive walkthrough* on a guide users keep misreading |
+| **Altitude** | Aim at the outcome behind the task | Stop fixing crashes one by one; aim for keeping the app crash-free |
 
-This is instruction-driven loading, not a plugin or guaranteed runtime hook. The skill itself does not edit your configuration.
+## Does it work?
 
-## Other agents
+We ran 18 scenarios through a fresh model twice, once without the skill and once with it. There are three or more per ambition type, plus "guardrail" cases where the right move is to *not* expand scope. A separate judge model scored every reply against the scenario's criteria without knowing which version wrote it, then picked a winner head-to-head in random order.
 
-Use your host's documented skill installation mechanism for the root `SKILL.md` and its companion files. If it has no skill loader, supply `SKILL.md` as task context. Do not assume the Hermes slash command works elsewhere.
+<!-- EVAL_TABLE_START -->
+Latest run (`claude-sonnet-5-5` answering, `claude-opus-5-5` judging, 18 scenarios, 1 rep each):
 
-## Examples and evaluation
+| Group | Cases | Criteria passed (baseline → skill) | All criteria met (baseline → skill) | Usefulness 1–5 (baseline → skill) | Head-to-head (skill / baseline / tie) |
+|---|---|---|---|---|---|
+| Speed | 3 | 100% → 100% | 3/3 → 3/3 | 4.33 → 4.0 | 1 / 2 / 0 |
+| Depth | 3 | 82% → 100% | 1/3 → 3/3 | 4.0 → 4.0 | 1 / 2 / 0 |
+| Range | 3 | 55% → 91% | 0/3 → 2/3 | 4.0 → 3.67 | 0 / 3 / 0 |
+| Altitude | 3 | 50% → 100% | 0/3 → 3/3 | 3.0 → 3.67 | 1 / 2 / 0 |
+| Guardrail | 6 | 92% → 100% | 5/6 → 6/6 | 4.17 → 4.17 | 3 / 3 / 0 |
+| **All** | 18 | 76% → 98% | 9/18 → 17/18 | 3.94 → 3.94 | 6 / 12 / 0 |
 
-Read [examples.md](examples.md). Behavioral cases and pass/fail criteria live in [evals/scenarios.json](evals/scenarios.json).
+**How to read this:**
 
-Run structural checks from this directory:
+- **The skill reliably does its job.** With it, replies met every criterion in 17 of 18 scenarios, against 9 of 18 without it. The biggest gains are in Altitude, Depth and Range, which a model rarely brings up on its own. Guardrails held: no scope creep on typos, incidents, declined ideas or poems.
+- **A generic judge still often prefers the baseline head-to-head (12 of 18).** When asked only "which reply is more useful?", the judge tends to reward the longer, more complete deliverable. The skill deliberately offers one idea and stops. Whether that trade is right for you is a judgment call; this number is reported rather than hidden.
+- **Iterations so far.** Earlier runs (`results/2026-10-16-v1`, `-v2`) showed the skill withholding the requested work and using bare labels like "That's an Altitude shift". Both were fixed: the skill now delivers or offers the original request, and names the type with a plain explanation beside it.
+
+One run on one model pairing is evidence, not proof. Re-run with `--reps 3` for tighter numbers.
+<!-- EVAL_TABLE_END -->
+
+Full replies and per-criterion verdicts are in [`evals/results/`](evals/results/). Re-run it yourself:
 
 ```sh
-python3 -m unittest discover -s tests -v
+EVAL_BASE_URL=<openai-compatible-endpoint>/v1 \
+EVAL_SUBJECT_MODEL=<model> EVAL_JUDGE_MODEL=<different-or-stronger-model> \
+python3 evals/run_eval.py --reps 3 --out evals/results/my-run
 ```
 
-These tests check packaging and required text, **not model behavior**. For behavioral evaluation, provide each scenario to an agent with and without the skill in fresh sessions, record its response, and judge it against every criterion. Compare on the same model and settings. Do not call scenarios passed until actual responses have been inspected. No model evaluation results are bundled in this initial release.
+## Install
 
-## Files
+The skill is plain Markdown with no dependencies, API keys or background services.
 
-- `SKILL.md`: portable procedure and safeguards
-- `examples.md`: task-specific applications
-- `evals/scenarios.json`: behavioral evaluation cases
-- `tests/test_package.py`: dependency-free structural checks
-- `LICENSE`: MIT license for this original adaptation
+**Hermes Agent:** copy this folder to `~/.hermes/skills/stay-ambitious/` (or your active profile's `skills/` directory) and start a new session. Invoke it with `/stay-ambitious`.
 
-## Attribution
+**Claude Code:** copy it to `~/.claude/skills/stay-ambitious/` (personal) or `.claude/skills/stay-ambitious/` (per project).
 
-Inspired by Felix Rieseberg's [How to be more ambitious: A tutorial for humans with models](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/), which introduces Speed, Altitude, Depth, and Range. This repository contains an independent adaptation, not a copy of the article. The MIT license does not relicense the source article. No affiliation or endorsement is implied.
+**Other agents:** use your host's skill loader for `SKILL.md` and its `references/` folder. If your host has no skill loader, paste `SKILL.md` into the system prompt or project instructions. Only Hermes has been tested.
 
-Created by [Mac Budkowski](https://github.com/MacBudkowski), with Hermes Agent.
+### Optional: let the agent check on its own
 
-## Source quotations and publication
+Skills load when a task matches their description. To make the check more dependable, add this to your standing instructions:
 
-`references/article-excerpts.md` preserves the supplied four definitions and full Altitude, Depth, and Range sections verbatim, with attribution. Speed has only a brief treatment in the original article, preserved here. These quotations are excluded from the MIT license. Before publishing the quoted reference, resolve permission for redistribution or use a link-based edition. The original article and our interview guidance are separate sources; consult both when applying a named category.
+> Before agreeing scope for substantial work, load the `stay-ambitious` skill and consider whether Speed, Depth, Range, or Altitude would materially help. Skip trivial, urgent, explicitly narrow, or already-agreed tasks.
+
+This is an instruction, not a guaranteed hook. The agent still decides.
+
+## What's inside
+
+```
+SKILL.md               The procedure: when to use, how to interview, when to stop
+references/
+  speed.md             How to apply each type, plus the article's original text
+  depth.md               for that type only, so an agent loads just what it needs
+  range.md
+  altitude.md
+  examples.md          Same request with four different answers; quiet skips
+  source-notice.md     Rights and attribution for the quoted article text
+evals/
+  scenarios.json       18 behavioral test cases with pass criteria
+  run_eval.py          With/without-skill runner and blind judge (stdlib only)
+  results/             Recorded runs: raw replies, verdicts, summary
+tests/test_package.py  Structural checks (files, links, frontmatter, quote integrity)
+```
+
+Run the structural checks with `python3 -m unittest discover -s tests -v`. They check the package, not model behavior; the evaluation covers behavior.
+
+## Design principles
+
+- **One suggestion, then stop.** A good idea that opens a new line of thinking is the whole deliverable. Plans come later, if you want them.
+- **Selective, not inflationary.** Bigger isn't better. Typos, incidents, declined ideas and creative work keep their scope.
+- **Coach, don't quiz.** The agent brings the specialist knowledge. You shouldn't have to guess which technique it's thinking of.
+- **Interest is not approval.** No extra spending, access, agents or automation without an explicit yes.
+- **Author's words, loaded on demand.** Each type's file includes the essay's original text for that type only.
+
+## Credits
+
+Created by [Mac Budkowski](https://github.com/MacBudkowski) with Hermes Agent. The four-type framework is from Felix Rieseberg's essay, linked above. This is an independent adaptation, not endorsed by the author.
+
+## License
+
+MIT for this package's original content; see [LICENSE](LICENSE). Quoted article text is excluded; see [references/source-notice.md](references/source-notice.md).

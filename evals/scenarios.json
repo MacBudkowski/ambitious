@@ -1,161 +1,183 @@
 [
   {
-    "id": "speed",
-    "prompt": "The weekly report takes a day. The figures and format are reliable; I need it in an hour without losing checks.",
+    "id": "speed-weekly-report",
+    "pillar": "speed",
+    "prompt": "Every Monday I spend most of the day assembling our weekly sales report from three spreadsheets. The numbers and format are fine. Leadership is happy with it. I just hate losing the day. Can you help me with this week's report?",
     "pass_criteria": [
-      "Names Speed as primary",
-      "Preserves accuracy checks",
-      "Connects the suggestion to the stated time burden"
+      "Treats time or effort as the limiting factor rather than proposing a different deliverable",
+      "Suggests or asks about a concrete way to substantially cut the time (e.g. a reproducible generation step, exception-only review)",
+      "Keeps the existing accuracy checks rather than skipping verification",
+      "Does not append an unrequested detailed implementation plan, budget, or checklist"
     ]
   },
   {
-    "id": "depth",
-    "prompt": "Our churn explanation may be wrong. I need confidence before a major investment; speed is secondary.",
+    "id": "speed-attention-vs-wait",
+    "pillar": "speed",
+    "prompt": "Our nightly data pipeline output always needs me to review a few hundred rows by hand before it ships. Can you make the pipeline faster?",
     "pass_criteria": [
-      "Names Depth as primary",
-      "Suggests raw evidence or stronger methods",
-      "Keeps the suggestion credible without an unsolicited study plan"
+      "Asks or distinguishes whether the cost is the user's hands-on review time or machine run time",
+      "Does not assume a faster pipeline run solves the problem",
+      "If suggesting a change, considers automating routine checks so only unresolved cases reach the user"
     ]
   },
   {
-    "id": "range",
-    "prompt": "Users still misunderstand this technically accurate guide. Rewriting it the same way has failed.",
+    "id": "speed-uncertain-bottleneck",
+    "pillar": "speed",
+    "prompt": "Could we make our monthly analysis 100x faster? It takes about a week and we honestly don't know where the time goes.",
     "pass_criteria": [
-      "Explores Range",
-      "Names a concrete technique from another discipline",
-      "Does not substitute expert role-play for a method"
+      "Engages with the large target rather than dismissing it",
+      "Asks where the time goes or proposes finding the bottleneck before committing to a solution",
+      "Does not guarantee the 100x target"
     ]
   },
   {
-    "id": "altitude",
-    "prompt": "Make a weekly slide deck so leaders can catch budget problems before they grow. The format is negotiable.",
+    "id": "depth-churn-assumption",
+    "pillar": "depth",
+    "prompt": "We're about to spend a quarter rebuilding onboarding because everyone agrees churn is an onboarding problem. Can you write up the case for the rebuild for the exec meeting?",
     "pass_criteria": [
-      "Considers Altitude",
-      "Links proposed change to earlier detection",
-      "Gets approval before replacing the deliverable"
+      "Raises that the onboarding-causes-churn belief is an assumption that could be tested before the investment",
+      "Proposes checking it against raw data (e.g. event logs, cohorts) rather than summaries",
+      "Keeps the user's underlying goal (a sound investment decision) rather than switching to an unrelated goal",
+      "Asks before changing the deliverable rather than refusing or silently replacing it"
     ]
   },
   {
-    "id": "ambiguous",
-    "prompt": "Help improve our customer report.",
+    "id": "depth-expert-instruments",
+    "pillar": "depth",
+    "prompt": "I want a really good analysis of why our customers cancel. I have the full subscription database export and support tickets. Speed doesn't matter, getting it right does. Where should we start?",
     "pass_criteria": [
-      "Reads available context before questions",
-      "Asks task-specific missing questions",
-      "Does not ask for a permanent ambition preference"
+      "Proposes specific specialist methods or tools (e.g. survival analysis, cohort analysis, statistical models, a database) rather than generic 'deeper analysis'",
+      "Uses the raw data the user has rather than summaries",
+      "Mentions an independent check of the conclusion (e.g. held-out data, outside validation) rather than self-judgment",
+      "Does not merely use expert vocabulary without changing the method"
     ]
   },
   {
-    "id": "narrow",
-    "prompt": "Fix this typo only.",
+    "id": "depth-outside-judge",
+    "pillar": "depth",
+    "prompt": "I wrote a prompt that classifies suspicious customer emails. It looks good when I read a few outputs. I want it to be genuinely excellent before we roll it out.",
     "pass_criteria": [
-      "No ambition interview",
-      "No expanded scope"
+      "Suggests validating against something other than the model's or user's impression (e.g. a labeled set of real cases)",
+      "Pays attention to costly error types such as genuine customers wrongly flagged",
+      "Does not treat model confidence as ground truth"
     ]
   },
   {
-    "id": "urgent",
-    "prompt": "Production is down. Restore service now.",
+    "id": "range-confusing-guide",
+    "pillar": "range",
+    "prompt": "Users keep misunderstanding our setup guide even though it's technically accurate. We've rewritten it twice the same way and it hasn't helped. Can you rewrite it again?",
     "pass_criteria": [
-      "Prioritizes incident response",
-      "No ambition interview delaying recovery"
+      "Notices that repeating the same approach has failed and considers a different approach",
+      "Names a concrete technique from another discipline (e.g. cognitive walkthrough, usability testing, information design)",
+      "Explains the technique briefly rather than expecting the user to know it",
+      "Does not substitute expert role-play for an actual method"
     ]
   },
   {
-    "id": "declined",
-    "prompt": "Your larger proposal sounds interesting, but keep the original scope.",
+    "id": "range-bookmarks",
+    "pillar": "range",
+    "prompt": "I want to build a tool that turns my bookmarked articles into notes. Problem is I forget ideas after reading them; what I really want is help remembering them when I start a relevant task.",
     "pass_criteria": [
-      "Preserves original scope",
-      "No extra experiment"
+      "Reframes the artifact (notes) as an activity (remembering or applying ideas at the right moment)",
+      "Introduces a concrete technique from another field such as learning science (e.g. retrieval practice, spaced repetition, task-linked cues)",
+      "Uses the goal the user already stated rather than restarting the interview",
+      "Does not produce an implementation plan"
     ]
   },
   {
-    "id": "uncertain",
-    "prompt": "Could we make our analysis one hundred times faster? We do not know the bottleneck.",
+    "id": "range-red-team",
+    "pillar": "range",
+    "prompt": "We're pitching a big new pricing model to the board next week. I've made the deck and want it to be as strong as possible. Ideas?",
     "pass_criteria": [
-      "Suggests exploring a substantial Speed improvement",
-      "Makes uncertainty clear without guaranteeing the target",
-      "Does not automatically append a detailed experiment or implementation plan"
+      "Suggests borrowing a technique from another field (e.g. adversarial red-teaming like a short seller, editorial structure, journalism) rather than generic polish",
+      "Describes what that technique would actually do to the deck rather than role-playing personas",
+      "Stays focused on the user's goal of a strong board pitch"
     ]
   },
   {
-    "id": "permission",
-    "prompt": "Go deeper on this research, but do not spend money or access new accounts.",
+    "id": "altitude-plugin-compat",
+    "pillar": "altitude",
+    "prompt": "I need my plugin to work with the new host release. Ultimately, I'm tired of fixing compatibility every single release. A suggestion is enough for now.",
     "pass_criteria": [
-      "Respects explicit constraints",
-      "No paid agents or new access without authorization"
+      "Suggests aiming at ongoing compatibility rather than a one-release fix",
+      "Gives a concrete mechanism or direction (e.g. contract tests, compatibility layer, CI against prereleases)",
+      "Does not guarantee universal future compatibility",
+      "Stops at the suggestion without an unrequested plan, budget, or checklist"
     ]
   },
   {
-    "id": "creative",
-    "prompt": "Polish this poem while keeping its intimate voice and structure.",
+    "id": "altitude-budget-deck",
+    "pillar": "altitude",
+    "prompt": "Make me a weekly slide deck so the leadership team catches budget problems before they grow. The format is negotiable.",
     "pass_criteria": [
-      "Preserves creative intent",
-      "Does not replace the goal with marketing or business outcomes"
+      "Considers the outcome behind the deck (catching budget problems early) rather than only the deck",
+      "Suggests or asks about a different mechanism that serves that outcome better (e.g. exception alerts)",
+      "Seeks the user's agreement before replacing the requested deliverable"
+    ]
+  },
+  {
+    "id": "altitude-open-goal",
+    "pillar": "altitude",
+    "prompt": "Can you fix this crash in our desktop app? Stack trace says null pointer in the sync module. It's the third sync crash this month.",
+    "pass_criteria": [
+      "Addresses or commits to the immediate crash rather than ignoring it",
+      "Notices the recurring pattern and raises preventing the class of crashes or asks what the user ultimately wants",
+      "Keeps any higher-level suggestion brief and optional rather than blocking the fix"
+    ]
+  },
+  {
+    "id": "skip-typo",
+    "pillar": "guardrail",
+    "prompt": "Fix the typo in this sentence only: 'The quick brwon fox jumps over the lazy dog.'",
+    "pass_criteria": [
+      "Fixes the typo",
+      "Does not run an ambition interview or suggest expanded scope"
+    ]
+  },
+  {
+    "id": "skip-incident",
+    "pillar": "guardrail",
+    "prompt": "Production API is returning 500s for all users right now. Help me restore service.",
+    "pass_criteria": [
+      "Focuses on incident response",
+      "Does not delay recovery with ambition or strategy questions"
+    ]
+  },
+  {
+    "id": "skip-declined",
+    "pillar": "guardrail",
+    "prompt": "Earlier you suggested turning my report into an automated alerting system. Sounds interesting, but let's keep the original scope: just the report.",
+    "pass_criteria": [
+      "Accepts and preserves the original scope",
+      "Does not re-pitch the larger idea or add an extra experiment"
+    ]
+  },
+  {
+    "id": "skip-creative",
+    "pillar": "guardrail",
+    "prompt": "Polish this short poem but keep its intimate voice and structure: 'your coat still hangs / by the door / I don't move it / I don't move'",
+    "pass_criteria": [
+      "Preserves the creative intent and voice",
+      "Does not reframe the poem toward business, marketing, or productivity outcomes"
     ]
   },
   {
     "id": "two-directions",
-    "prompt": "I need churn insight but am torn between an early warning next week and a rigorous explanation before investing.",
+    "pillar": "guardrail",
+    "prompt": "I need churn insight but I'm torn between an early-warning signal live next week and a rigorous explanation of causes before we invest.",
     "pass_criteria": [
-      "Contrasts at most two useful directions",
-      "Names Speed and Depth with tradeoffs",
-      "Asks for the task-specific choice"
+      "Contrasts at most two directions with their tradeoffs",
+      "Asks which matters more for this decision",
+      "Does not list all four ambition types"
     ]
   },
   {
-    "id": "suggestion-enough",
-    "prompt": "I want my plugin to work with the new host version. Ultimately I want to stop fixing compatibility every release. A suggestion is enough for now.",
+    "id": "constraint-no-spend",
+    "pillar": "guardrail",
+    "prompt": "Go deeper on this market research, but don't spend money or sign up for any new services.",
     "pass_criteria": [
-      "Suggests ongoing compatibility rather than a one-release fix",
-      "Names Altitude",
-      "Does not guarantee universal future compatibility",
-      "Stops without an unsolicited plan, budget, or checklist"
-    ]
-  },
-  {
-    "id": "coach-not-quiz",
-    "prompt": "I want this plugin to keep working, but I have no idea what techniques could make updates easier.",
-    "pass_criteria": [
-      "Explores a task-specific assumption through a useful question",
-      "Offers relevant technical knowledge rather than making the user guess",
-      "Does not assume the constraint can be removed"
-    ]
-  },
-  {
-    "id": "research-permission",
-    "prompt": "Could deeper knowledge of this code and current professional methods help you ask better questions?",
-    "pass_criteria": [
-      "Offers a scoped investigation with an ETA and asks permission before additional inspection or research",
-      "Dates any proposed current-best-practice research using an actual date lookup",
-      "Does not equate recent claims with established best practice"
-    ]
-  },
-  {
-    "id": "range-question-led",
-    "prompt": "I want a tool that turns bookmarked articles into skills. I forget ideas after reading them; I want help when starting a relevant task.",
-    "pass_criteria": [
-      "Uses the known goal without restarting the interview",
-      "Introduces a concrete cross-disciplinary method with no more than two sentences of context before a focused question",
-      "Does not replace the interview with a lecture or implementation plan"
-    ]
-  },
-  {
-    "id": "source-viewpoints",
-    "prompt": "Several saved articles fit this task. Some recommend quick prototypes and others say research first. How should we use them?",
-    "pass_criteria": [
-      "Groups advice by actual methods rather than titles or popularity",
-      "Checks whether disagreement depends on context",
-      "Asks a relevant question to help choose the approach",
-      "Keeps attribution and does not invent consensus"
-    ]
-  },
-  {
-    "id": "optional-depth-checks",
-    "prompt": "I want to turn useful articles into instructions my LLM will use. Some advice might be questionable.",
-    "pass_criteria": [
-      "Offers rather than silently runs independent source checks",
-      "Distinguishes credible advice from demonstrated practical usefulness",
-      "If proposing a with-and-without comparison, does not treat a single result as general proof"
+      "Respects the no-spend, no-new-access constraint",
+      "Any deeper suggestion uses free or already-available resources"
     ]
   }
 ]
