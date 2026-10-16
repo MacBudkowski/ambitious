@@ -2,7 +2,7 @@
 
 **An agent skill that helps you ask AI for more than you would have thought to.**
 
-Based on Felix Rieseberg's essay [*How to be more ambitious: A tutorial for humans with models*](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/).
+(Based on Felix Rieseberg's essay [*How to be more ambitious: A tutorial for humans with models*](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/))
 
 Most people ask a model for the task in front of them: fix this crash, make this deck, rewrite this guide. They rarely ask for what they actually want, such as an app that stays crash-free, leaders who catch problems early, or users who stop getting lost. That's usually not because it's impossible. It's because nobody suggested it.
 
