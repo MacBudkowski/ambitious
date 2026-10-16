@@ -14,7 +14,7 @@ A useful tell from the article: if there will be meetings about the work, Altitu
 
 ## Good suggestion shape
 
-> "Rather than a better weekly budget deck, you could aim for leaders hearing about overspend the week it starts: an exception alert from the same data, checked against last year's history to see whether it would have caught past problems sooner. It would replace a format people know, so it's worth trying alongside the deck first. (This is what's called Altitude: aiming at the goal behind the task.)"
+> "Rather than a better weekly budget deck, you could aim for leaders hearing about overspend the week it starts: an exception alert from the same data, checked against last year's history to see whether it would have caught past problems sooner. It would replace a format people know, so it's worth trying alongside the deck first."
 
 ## Limits
 

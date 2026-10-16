@@ -1,0 +1,36 @@
+{
+  "stripped_label_in": 32,
+  "cases": 40,
+  "head_to_head_without_label": {
+    "speed": {
+      "skill": 8,
+      "baseline": 0,
+      "tie": 0
+    },
+    "ALL": {
+      "skill": 28,
+      "baseline": 12,
+      "tie": 0
+    },
+    "depth": {
+      "skill": 6,
+      "baseline": 2,
+      "tie": 0
+    },
+    "range": {
+      "skill": 5,
+      "baseline": 3,
+      "tie": 0
+    },
+    "altitude": {
+      "skill": 4,
+      "baseline": 4,
+      "tie": 0
+    },
+    "guardrail": {
+      "skill": 5,
+      "baseline": 3,
+      "tie": 0
+    }
+  }
+}

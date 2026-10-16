@@ -14,7 +14,7 @@ Stay Ambitious teaches your agent to notice those moments, ask one or two good q
 >
 > **Without the skill:** a five-step general guide to plugin compatibility (adapter layer, public APIs, feature detection, CI, version ranges…).
 >
-> **With the skill:** "Since you want to stop fixing this every release, you could aim for the plugin to stay compatible on its own: a small contract test suite for exactly the host APIs your plugin depends on, run automatically against the host's beta builds, so a breaking change shows up as a failing test before the release ships. That's **Altitude** ambition: going after the outcome behind the task (a plugin that keeps working) rather than the individual fix. It depends on the host publishing pre-release builds. Want me to start with the fix for this release?"
+> **With the skill:** "Since you want to stop fixing this every release, you could aim for the plugin to stay compatible on its own: a small contract test suite for exactly the host APIs your plugin depends on, run automatically against the host's beta builds, so a breaking change shows up as a failing test before the release ships. It depends on the host publishing pre-release builds. Want me to start with the fix for this release?"
 
 Both are real responses from the [evaluation](#does-it-work) (lightly trimmed).
 
@@ -49,7 +49,7 @@ Latest run (`claude-sonnet-5-5` answering, `claude-opus-5-5` judging, 18 scenari
 
 - **The skill reliably does its job.** With it, replies met every criterion in 17 of 18 scenarios, against 9 of 18 without it. The biggest gains are in Altitude, Depth and Range, which a model rarely brings up on its own. Guardrails held: no scope creep on typos, incidents, declined ideas or poems.
 - **A generic judge still often prefers the baseline head-to-head (12 of 18).** When asked only "which reply is more useful?", the judge tends to reward the longer, more complete deliverable. The skill deliberately offers one idea and stops. Whether that trade is right for you is a judgment call; this number is reported rather than hidden.
-- **Iterations so far.** Earlier runs (`results/2026-10-16-v1`, `-v2`) showed the skill withholding the requested work and using bare labels like "That's an Altitude shift". Both were fixed: the skill now delivers or offers the original request, and names the type with a plain explanation beside it.
+- **Iterations so far.** Earlier runs showed the skill withholding the requested work and labelling its ideas with framework terms ("That's an Altitude shift"), which judges read as jargon. Both were fixed: the skill now delivers the original request first and describes its suggestion in plain words.
 
 One run on one model pairing is evidence, not proof. Re-run with `--reps 3` for tighter numbers.
 <!-- EVAL_TABLE_END -->

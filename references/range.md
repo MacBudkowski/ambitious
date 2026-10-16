@@ -20,12 +20,16 @@
 | Making busy people believe a cause-and-effect story | Journalism / editing | Inverted pyramid; lead with the change and its cause |
 | Finding where a plan is wrong | Finance / forensics | Short-seller or forensic-accountant red-team analysis |
 | Combining conflicting advice | Research synthesis | Group by method, then check whether disagreement reflects different contexts |
+| Covering shifts despite no-shows and swaps | Hospital / airline operations | On-call standby rotation; overbooking buffer sized from past no-show rate |
+| Catching risky terms in documents | Legal due diligence / aviation | Red-flag clause checklist reviewed every time, like a pre-flight checklist |
+| Preventing the same human error | Lean manufacturing | Poka-yoke: a step that makes the mistake impossible or obvious (e.g. scan-to-confirm) |
+| Getting everyone to speak, not just a few | Pedagogy / facilitation | Think-pair-share; cold-calling with wait time |
 
 These are illustrations, not proof that a technique works for this task.
 
 ## Good suggestion shape
 
-> "Before rewriting the guide again, we could run a cognitive walkthrough, a usability technique: step through each screen asking 'will the user know what to do here, and will they know it worked?'. That usually finds the exact decision points where people get lost. It finds likely problems; only real users confirm them. (This is what's called Range: borrowing a technique from another field.)"
+> "Before rewriting the guide again, we could run a cognitive walkthrough, a usability technique: step through each screen asking 'will the user know what to do here, and will they know it worked?'. That usually finds the exact decision points where people get lost. It finds likely problems; only real users confirm them."
 
 ## When combining several sources
 

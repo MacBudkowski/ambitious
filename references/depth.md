@@ -14,20 +14,22 @@ Keep the goal fixed. Change the method or the evidence. The article offers five 
 | **Produce new knowledge** | Finding what nobody knows yet | "Once we're in the raw data, what blind spot could we look for?" |
 | **Outside judge** | Who decides it's right: not the model, not the user's impression | "What, other than us, would show the result is right?" |
 
+**When proposing a test, name what decides success**: the outcome the user cares about (activation, error rate, revenue, recovery time), not an easy proxy (opens, likes, model confidence). Compare against the current version, not just between new variants.
+
 Use the article's four-part prompt **privately** to find the deeper version: (1) what a top professional would do that the user isn't asking for; (2) the rawest material they'd start from; (3) their specific methods and tools; (4) what external evidence would show the result is right. Then ask a natural, task-specific question. Don't make the user name specialist tools. Identifying them is your job.
 
 If the user doesn't know the field, explain a method in a sentence or two before asking how it fits.
 
 ## Good suggestion shape
 
-> "Instead of explaining churn from the dashboard, we could test the 'it's onboarding' belief against raw event logs, and check any new early signal on months the model hasn't seen. It needs access to the event data, and might confirm what you already believe. (This is what's called Depth: the same question, answered the way a field-leading expert would.)"
+> "Instead of explaining churn from the dashboard, we could test the 'it's onboarding' belief against raw event logs, and check any new early signal on months the model hasn't seen. It needs access to the event data, and might confirm what you already believe."
 
 ## Distinctions
 
 - **Depth vs. basic diligence.** Checking your arithmetic, inspecting errors and required security testing are baseline. They're not an ambition upgrade.
 - **Depth vs. generic quality.** "More rigorous" or "higher quality" isn't Depth until you name the raw material, method or independent check that changes.
 - **Depth vs. Range.** A method from another field is Depth when its purpose is stronger evidence for the same goal. Call it Range when opening a different disciplinary approach is the real shift.
-- **Depth feeding Altitude.** A deeper investigation can reveal a better goal. Name both briefly if that happens, without debating taxonomy.
+- **Depth feeding Altitude.** A deeper investigation can reveal a better goal. Say so plainly; don't debate taxonomy.
 - **Stretch goals aren't guarantees.** "Insist it's solvable" pushes past early defeatism. It doesn't override budgets, safety, or contrary results.
 - **Credible vs. useful.** If proposing a check, separate "is this advice credible?" (compare against independent sources) from "does it help here?" (try the same task with and without it, ideally blind). One comparison is informative, not proof. Offer these checks; don't run them silently.
 

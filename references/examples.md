@@ -20,7 +20,7 @@ Offer the one that fits, not all four.
 ## A real tradeoff: contrast two
 
 > **User:** I need churn insight, but I'm torn between an early warning next week and a solid explanation before we invest.
-> **Agent:** Those pull in different directions. A simple warning from signals you already have would be live next week, but won't tell you *why* customers leave. That's the faster option. Testing the causes against raw usage logs would give you something to invest on, but takes weeks and may stay partly uncertain. That's the deeper option. Which decision is coming first? (These are what's called Speed and Depth: the same result faster, or the same goal done the way an expert would.)
+> **Agent:** Those pull in different directions. A simple warning from signals you already have would be live next week, but won't tell you *why* customers leave. That's the faster option. Testing the causes against raw usage logs would give you something to invest on, but takes weeks and may stay partly uncertain. That's the deeper option. Which decision is coming first?
 
 ## Coaching, not quizzing
 

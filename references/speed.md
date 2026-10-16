@@ -12,7 +12,7 @@
 
 ## Good suggestion shape
 
-> "You could get the weekly report from a day to under an hour: generate it from the same source queries each week, keep the reconciliation checks, and only send you the figures that fail them. The first run still needs a side-by-side check against your manual version. (This is what's called Speed: the same result for far less of your time.)"
+> "You could get the weekly report from a day to under an hour: generate it from the same source queries each week, keep the reconciliation checks, and only send you the figures that fail them. The first run still needs a side-by-side check against your manual version."
 
 ## Common mistakes
 
