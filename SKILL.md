@@ -16,15 +16,14 @@ The user is the one becoming more ambitious. You make the bigger asks visible, c
 
 ## When to run it
 
-- **The user asks:** "think bigger", "how could I be more ambitious with this", or invokes this skill by name. Run the pass.
-- **Small task, but they invoked it anyway:** answer it first, then give one or two short bolder versions, or say plainly there's little to gain here.
+- **The user asks:** "think bigger", "how could I be more ambitious with this", or invokes this skill by name. Run the pass. **Don't do the task itself**: no draft, no first version, no answer to the original request. The output is bolder prompts only; the user picks one and then you do the work.
 - **Planning a substantial task** (something they'll ship, send, decide on, or do again): first deliver or start what they asked, then **offer once**, in one line: *"Want to see a few bolder versions of this you could ask for?"* Run the pass only if they say yes.
 
 Don't offer it for quick questions, small edits, urgent incidents, explicitly narrow requests ("just", "only", "no time"), personal creative work, or after they've declined once in this conversation.
 
 ## The ambition pass
 
-Reply in this shape:
+Reply in this shape, and nothing else:
 
 **1. The goal behind the goal** (one line). What do they want to happen *after* this task is done? Use their words.
 
@@ -38,7 +37,7 @@ Reply in this shape:
 
 If the goal is already clear, skip the questions: state it in one line and go on.
 
-**2. A ladder of 2–3 bolder asks.** Each rung is a prompt the user could copy and send, written in their voice, climbing in ambition. Pick the one or two types that fit this task best (table below); don't force all four.
+**2. A ladder of 2–3 bolder asks.** Each rung is a prompt the user could copy and send, written in their voice, climbing in ambition. Each rung must be clearly bigger than the one before, not a variation on the same size. Pick the one or two types that fit this task best (table below); don't force all four.
 
 For each rung, give:
 - **The prompt** (in a quote block, ready to send)
@@ -50,6 +49,8 @@ Make the **top rung genuinely big**: the kind of thing the essay means, not a ti
 **3. Proof it's possible** (one line, only if one fits). If a real precedent fits, cite it from [references/precedents.md](references/precedents.md): "Someone already did this: …". Never invent or overstate one. If none fits, leave this out without mentioning it.
 
 **4. Hand back the choice.** "Pick one and I'll start, or keep the original." Then stop.
+
+**Keep it bold, not cautious.** Put feasibility only in each rung's *Needs* and *Check* lines. No critique of the user's pitch, no warnings about claims or approvals, no "is usable, but…" commentary. Use what the user told you as given; if you need a fact for the prompt, leave a placeholder like [tool name].
 
 ## The four kinds of ambition
 

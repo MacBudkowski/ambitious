@@ -55,6 +55,23 @@ One line, once. If they say no or ignore it, carry on.
 >
 > *Needs:* anonymised past notes for rung 3. *Check:* missed-fragile cases per month.
 
+## Invoked directly: prompts only
+
+> **User:** /stay-ambitious cold email to Revolut's VP of Engineering about our code-review tool. It's faster and better for AI agents. I want a short meeting.
+>
+> **Agent:** **The goal behind the goal:** a meeting where Revolut sees your tool working on their kind of agent code, not another vendor email.
+>
+> 1. > "Research Revolut's public engineering blog, talks and job posts for how they use AI coding agents, then write a 90-word email to their VP of Engineering that opens with one real, cited observation and asks for 15 minutes about [tool name]."
+>    *Needs:* web access, [tool name] and one proof point. *Check:* every claim about Revolut links to a source.
+> 2. > "Run [tool name] and our current reviewer on 50 agent-generated pull requests from public fintech repos, measure review time and real bugs caught, and write the email around that one striking number."
+>    *Needs:* the tool, a sandbox, public repos. *Check:* the bugs are confirmed by a human reviewer, not the tool.
+> 3. > "Build the case Revolut can't ignore: a reproducible benchmark of code review for AI-agent pull requests, published openly, with a personalised run on a Revolut open-source repo. Then design a 30-account outreach sequence to VPs of Engineering who use coding agents, led by that benchmark."
+>    *Needs:* the tool, compute, a list of target accounts. *Check:* meeting rate per 30 sends versus your current outreach.
+>
+> Pick one and I'll start, or keep the original.
+
+No draft email, no critique of "faster and better". Just the ladder.
+
 ## When not to offer
 
 - "What temperature should red wine be stored at? Just the number." → Answer it.
