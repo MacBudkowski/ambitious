@@ -68,7 +68,7 @@ The skill is plain Markdown with no dependencies, API keys or background service
 
 **Claude Code:** copy it to `~/.claude/skills/stay-ambitious/` (personal) or `.claude/skills/stay-ambitious/` (per project).
 
-**Other agents:** use your host's skill loader for `SKILL.md` and its `references/` folder. If your host has no skill loader, paste `SKILL.md` into the system prompt or project instructions. Only Hermes has been tested.
+**Other agents:** use your host's skill loader for `SKILL.md` and its `references/` folder. If your host has no skill loader, paste `SKILL.md` into the system prompt or project instructions. Compatibility with other hosts hasn't been tested.
 
 ### Optional: let the agent check on its own
 
@@ -108,7 +108,7 @@ Run the structural checks with `python3 -m unittest discover -s tests -v`. They 
 
 ## Credits
 
-Created by [Mac Budkowski](https://github.com/MacBudkowski) with Hermes Agent. The four-type framework is from Felix Rieseberg's essay, linked above. This is an independent adaptation, not endorsed by the author.
+Created by [Mac Budkowski](https://github.com/MacBudkowski). The four-type framework is from Felix Rieseberg's essay, linked above. This is an independent adaptation, not endorsed by the author.
 
 ## License
 
