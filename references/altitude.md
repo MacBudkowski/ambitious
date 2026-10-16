@@ -7,13 +7,14 @@
 1. **Find the goal beyond the goal.** "What do you want to happen after this is done?" or "What will this let you decide?"
 2. **Find the recurring burden.** "After this fix, what would you still have to keep doing yourself?"
 3. **Raise the target one level.** Move from one fix to preventing the problem class, from a report to the decision it serves, or from one-off tasks to a durable workflow that needs the user less often.
-4. **Name what the higher level needs.** Durable workflows usually need access and tooling: crash reports, version-to-commit mapping, test machines, data connectors. Say so briefly. It's often the real work.
+4. **Recurrence is the strongest signal.** "Third time this month", "again", "every quarter": fix the instance, then add one sentence about removing the class of problem (a suite-wide policy, a prevention check, a process change). Skipping it entirely is the most common Altitude miss.
+5. **Name what the higher level needs.** Durable workflows usually need access and tooling: crash reports, version-to-commit mapping, test machines, data connectors. Say so briefly. It's often the real work.
 
 A useful tell from the article: if there will be meetings about the work, Altitude is probably worth considering.
 
 ## Good suggestion shape
 
-> "Rather than a better weekly budget deck, you could aim for leaders hearing about overspend the week it starts: an exception alert from the same data, checked against last year's history to see whether it would have caught past problems sooner. That's Altitude ambition: aiming at what the report is for, not just the report. It would replace a format people know, so it's worth trying alongside the deck first."
+> "Rather than a better weekly budget deck, you could aim for leaders hearing about overspend the week it starts: an exception alert from the same data, checked against last year's history to see whether it would have caught past problems sooner. It would replace a format people know, so it's worth trying alongside the deck first. (This is what's called Altitude: aiming at the goal behind the task.)"
 
 ## Limits
 

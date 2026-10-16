@@ -12,7 +12,7 @@
 
 ## Good suggestion shape
 
-> "You could get the weekly report from a day to under an hour: generate it from the same source queries each week, keep the reconciliation checks, and only send you the figures that fail them. That's Speed ambition: the same report for far less of your time. The first run still needs a side-by-side check against your manual version."
+> "You could get the weekly report from a day to under an hour: generate it from the same source queries each week, keep the reconciliation checks, and only send you the figures that fail them. The first run still needs a side-by-side check against your manual version. (This is what's called Speed: the same result for far less of your time.)"
 
 ## Common mistakes
 
@@ -21,6 +21,7 @@
 | Assuming "faster model" is the fix | Ask whether the cost is attention or waiting |
 | Dropping a quality check to save time | Keep the checks; automate them |
 | Building automation for a step that could be removed | Ask whether the step is still needed |
+| Suggesting something that adds work, not removes it | Check the idea actually shortens the remaining work (e.g. one parametrised template for the other 39 functions) |
 | Appending an evaluation plan to the suggestion | Explain evaluation only if the user asks how it would work |
 
 ## What the article says

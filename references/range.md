@@ -9,6 +9,8 @@
 3. **Pick the field and the technique yourself, and name both.** The user shouldn't have to invent the cross-disciplinary link. Say where the technique comes from ("a backtest, borrowed from finance"; "a cognitive walkthrough, from interaction design"). The borrowed origin is what makes it Range, and it helps the user find more of that field's tools later. Introduce it in one or two sentences, then ask how it could fit.
 4. **Borrow methods, not costumes.** Don't ask the model to be a short seller. Do what a short seller does to research a position. Role-play makes the transcript stranger without improving the result.
 
+**Automation is not Range.** A spreadsheet formula, a reminder bot or a form are useful, but they're not borrowed from another field. Range means a *named* technique with a recognisable origin: poka-yoke (mistake-proofing, from lean manufacturing), on-call rotations and overbooking buffers (hospitals, airlines), think-pair-share (pedagogy), checklists (aviation, surgery), red-flag clause lists (legal due diligence). If you can't name the field, it probably isn't Range; consider whether Speed fits better.
+
 ## Example borrowings
 
 | Problem as a verb | Field | Technique |
@@ -23,7 +25,7 @@ These are illustrations, not proof that a technique works for this task.
 
 ## Good suggestion shape
 
-> "Before rewriting the guide again, we could run a cognitive walkthrough, a usability technique: step through each screen asking 'will the user know what to do here, and will they know it worked?'. That usually finds the exact decision points where people get lost. That's Range ambition: borrowing a method from another field, here interaction design. It finds likely problems; only real users confirm them."
+> "Before rewriting the guide again, we could run a cognitive walkthrough, a usability technique: step through each screen asking 'will the user know what to do here, and will they know it worked?'. That usually finds the exact decision points where people get lost. It finds likely problems; only real users confirm them. (This is what's called Range: borrowing a technique from another field.)"
 
 ## When combining several sources
 

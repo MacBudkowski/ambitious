@@ -20,7 +20,7 @@ If the user doesn't know the field, explain a method in a sentence or two before
 
 ## Good suggestion shape
 
-> "Instead of explaining churn from the dashboard, we could test the 'it's onboarding' belief against raw event logs, and check any new early signal on months the model hasn't seen. That's Depth ambition: the same question, answered the way an expert analyst would, with much stronger evidence. It needs access to the event data, and might confirm what you already believe."
+> "Instead of explaining churn from the dashboard, we could test the 'it's onboarding' belief against raw event logs, and check any new early signal on months the model hasn't seen. It needs access to the event data, and might confirm what you already believe. (This is what's called Depth: the same question, answered the way a field-leading expert would.)"
 
 ## Distinctions
 
@@ -39,6 +39,7 @@ If the user doesn't know the field, explain a method in a sentence or two before
 | Expert role-play ("as a senior data scientist…") | Change the actual method and tools |
 | Asking the user which statistical method they want | Propose one and explain it briefly |
 | Letting the model grade its own work | Name an outside judge: a test, data, or a person |
+| Proposing a test without saying what it measures | Name the outcome that decides success (activation, error rate, revenue), not a proxy like opens or likes |
 
 ## What the article says
 

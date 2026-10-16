@@ -49,17 +49,33 @@ class PackageTests(unittest.TestCase):
             self.assertTrue((ROOT / name).is_file(), name)
 
     def test_frontmatter(self):
-        fm = frontmatter((ROOT / "SKILL.md").read_text())
-        self.assertEqual(fm.get("name"), "stay-ambitious")
-        for key in ("description", "version", "author", "license", "platforms"):
-            self.assertTrue(fm.get(key), key)
-        desc = fm["description"]
-        self.assertTrue(desc.startswith("Use when"), "description should state the trigger")
-        self.assertLessEqual(len(desc), 60, "description is shown truncated in skill indexes")
-        self.assertRegex(fm["version"], r"^\d+\.\d+\.\d+$")
+        """Follows the open Agent Skills spec (agentskills.io/specification)."""
+        text = (ROOT / "SKILL.md").read_text()
+        fm = frontmatter(text)
+        name = fm.get("name", "")
+        self.assertEqual(name, "stay-ambitious")
+        self.assertRegex(name, r"^[a-z0-9]+(-[a-z0-9]+)*$")
+        self.assertLessEqual(len(name), 64)
+        desc = fm.get("description", "")
+        self.assertTrue(desc.startswith("Use when"), "description should lead with the trigger")
+        self.assertLessEqual(len(desc), 1024)
+        first_sentence = desc.split(". ")[0]
+        self.assertLessEqual(len(first_sentence), 60, "some hosts truncate descriptions; keep the trigger first and short")
+        head = text[4:text.index("\n---\n", 4)]
+        for key in ("author:", "version:"):
+            self.assertIn(key, head)
+
+    def test_host_neutral(self):
+        """The skill itself must not assume a particular agent host."""
+        for path in [ROOT / "SKILL.md", ROOT / "README.md", *(ROOT / "references").glob("*.md")]:
+            text = path.read_text().lower()
+            for host in ("hermes",):
+                self.assertNotIn(host, text, f"{path.name} mentions {host}")
 
     def test_skill_is_concise(self):
-        words = len((ROOT / "SKILL.md").read_text().split())
+        text = (ROOT / "SKILL.md").read_text()
+        body = text[text.index("\n---\n", 4) + 5:]
+        words = len(body.split())
         self.assertLess(words, 1200, f"SKILL.md has {words} words; move detail to references/")
 
     def test_skill_names_every_pillar_and_links_resolve(self):

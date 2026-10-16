@@ -2,6 +2,8 @@
 
 **An agent skill that helps you ask AI for more than you would have thought to.**
 
+Based on Felix Rieseberg's essay [*How to be more ambitious: A tutorial for humans with models*](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/).
+
 Most people ask a model for the task in front of them: fix this crash, make this deck, rewrite this guide. They rarely ask for what they actually want, such as an app that stays crash-free, leaders who catch problems early, or users who stop getting lost. That's usually not because it's impossible. It's because nobody suggested it.
 
 Stay Ambitious teaches your agent to notice those moments, ask one or two good questions, and offer **one concrete, more ambitious possibility**. Then it stops and lets you decide. It doesn't make every task bigger, and it stays quiet when a task should simply be done.
@@ -18,7 +20,7 @@ Both are real responses from the [evaluation](#does-it-work) (lightly trimmed).
 
 ## Four kinds of ambition
 
-Based on Felix Rieseberg's essay [*How to be more ambitious: A tutorial for humans with models*](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/):
+The four types, from the essay:
 
 | Type | The shift | Example |
 |---|---|---|
@@ -62,13 +64,12 @@ python3 evals/run_eval.py --reps 3 --out evals/results/my-run
 
 ## Install
 
-The skill is plain Markdown with no dependencies, API keys or background services.
+The skill is a plain folder of Markdown in the open [Agent Skills](https://agentskills.io/specification) format. It has no dependencies, API keys, tools or background services, so it works with any agent that can load skills, or with any model if you paste it in.
 
-**Hermes Agent:** copy this folder to `~/.hermes/skills/stay-ambitious/` (or your active profile's `skills/` directory) and start a new session. Invoke it with `/stay-ambitious`.
+- **Agents with skill support:** copy the `stay-ambitious` folder into your agent's skills directory (for example `~/.claude/skills/` for Claude Code), then start a new session. Check your agent's documentation for its skills location.
+- **Agents without skill support:** add `SKILL.md` to the system prompt or project instructions. Keep `references/` alongside it if the agent can read files, or paste in the one type you care about.
 
-**Claude Code:** copy it to `~/.claude/skills/stay-ambitious/` (personal) or `.claude/skills/stay-ambitious/` (per project).
-
-**Other agents:** use your host's skill loader for `SKILL.md` and its `references/` folder. If your host has no skill loader, paste `SKILL.md` into the system prompt or project instructions. Compatibility with other hosts hasn't been tested.
+Only the main file is needed to start. The `references/` files load on demand, one ambition type at a time.
 
 ### Optional: let the agent check on its own
 
@@ -76,7 +77,7 @@ Skills load when a task matches their description. To make the check more depend
 
 > Before agreeing scope for substantial work, load the `stay-ambitious` skill and consider whether Speed, Depth, Range, or Altitude would materially help. Skip trivial, urgent, explicitly narrow, or already-agreed tasks.
 
-This is an instruction, not a guaranteed hook. The agent still decides.
+This is an instruction, not a guaranteed hook; the agent still decides.
 
 ## What's inside
 
