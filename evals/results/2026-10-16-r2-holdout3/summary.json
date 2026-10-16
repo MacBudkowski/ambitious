@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "date": "2026-10-16",
+    "subject": "claude-sonnet-5-5",
+    "judge": "claude-opus-5-5",
+    "scenario_file": "holdout3.json",
+    "scenarios": 20,
+    "reps": 2,
+    "subject_calls": 80,
+    "failures": []
+  },
+  "results": {
+    "altitude": {
+      "cases": 8,
+      "criteria_pass_rate": {
+        "baseline": 0.643,
+        "skill": 0.786
+      },
+      "all_criteria_met": {
+        "baseline": "2/8",
+        "skill": "2/8"
+      },
+      "mean_usefulness": {
+        "baseline": 4.0,
+        "skill": 4.0
+      },
+      "head_to_head": {
+        "skill": 8,
+        "baseline": 0,
+        "tie": 0
+      }
+    },
+    "ALL": {
+      "cases": 40,
+      "criteria_pass_rate": {
+        "baseline": 0.743,
+        "skill": 0.889
+      },
+      "all_criteria_met": {
+        "baseline": "17/40",
+        "skill": "24/40"
+      },
+      "mean_usefulness": {
+        "baseline": 4.15,
+        "skill": 4.3
+      },
+      "head_to_head": {
+        "skill": 28,
+        "baseline": 9,
+        "tie": 3
+      }
+    },
+    "depth": {
+      "cases": 8,
+      "criteria_pass_rate": {
+        "baseline": 0.933,
+        "skill": 0.933
+      },
+      "all_criteria_met": {
+        "baseline": "6/8",
+        "skill": "6/8"
+      },
+      "mean_usefulness": {
+        "baseline": 4.5,
+        "skill": 4.5
+      },
+      "head_to_head": {
+        "skill": 7,
+        "baseline": 1,
+        "tie": 0
+      }
+    },
+    "guardrail": {
+      "cases": 8,
+      "criteria_pass_rate": {
+        "baseline": 0.964,
+        "skill": 1.0
+      },
+      "all_criteria_met": {
+        "baseline": "7/8",
+        "skill": "8/8"
+      },
+      "mean_usefulness": {
+        "baseline": 4.62,
+        "skill": 4.62
+      },
+      "head_to_head": {
+        "skill": 3,
+        "baseline": 2,
+        "tie": 3
+      }
+    },
+    "range": {
+      "cases": 8,
+      "criteria_pass_rate": {
+        "baseline": 0.531,
+        "skill": 0.844
+      },
+      "all_criteria_met": {
+        "baseline": "0/8",
+        "skill": "3/8"
+      },
+      "mean_usefulness": {
+        "baseline": 3.75,
+        "skill": 4.12
+      },
+      "head_to_head": {
+        "skill": 7,
+        "baseline": 1,
+        "tie": 0
+      }
+    },
+    "speed": {
+      "cases": 8,
+      "criteria_pass_rate": {
+        "baseline": 0.654,
+        "skill": 0.885
+      },
+      "all_criteria_met": {
+        "baseline": "2/8",
+        "skill": "5/8"
+      },
+      "mean_usefulness": {
+        "baseline": 3.88,
+        "skill": 4.25
+      },
+      "head_to_head": {
+        "skill": 3,
+        "baseline": 5,
+        "tie": 0
+      }
+    }
+  }
+}

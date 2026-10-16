@@ -34,20 +34,21 @@ The four types, from the essay:
 We tested it the way you'd test any change: the same prompts sent to a fresh model with and without the skill. A separate judge model scored each reply against that prompt's criteria without knowing which version wrote it, then picked the better of the two in random order. Each set has at least four cases per ambition type, plus "guardrail" cases where the right move is *not* to expand scope.
 
 <!-- EVAL_TABLE_START -->
-Final run: `claude-sonnet-5-5` answering, `claude-opus-5-5` judging, every prompt run twice with and twice without the skill (232 replies).
+Latest run: `claude-sonnet-5-5` answering, `claude-opus-5-5` judging, every prompt run twice with and twice without the skill (312 replies).
 
 | Test set | Written by | Criteria passed (without → with) | All criteria met | Head-to-head (skill / without / tie) |
 |---|---|---|---|---|
-| Author scenarios (18 × 2) | Written alongside the skill | 84% → **98%** | 22/36 → **34/36** | 22 / 12 / 2 |
-| Held-out set 1 (20 × 2) | Separate agent, never saw the skill | 87% → **99%** | 25/40 → **39/40** | 32 / 6 / 2 |
-| Held-out set 2 (20 × 2) | Separate agent, never saw the skill; not used for tuning | 81% → **89%** | 21/40 → **28/40** | 26 / 11 / 3 |
+| Held-out set 3 (20 × 2) | Separate agent; never used for tuning | 74% → **89%** | 17/40 → **24/40** | 28 / 9 / 3 |
+| Held-out set 2 (20 × 2) | Separate agent; used for one tuning round | 80% → **96%** | 19/40 → **34/40** | 26 / 10 / 4 |
+| Held-out set 1 (20 × 2) | Separate agent; used for tuning | 89% → **98%** | 28/40 → **37/40** | 27 / 13 / 0 |
+| Author scenarios (18 × 2) | Written alongside the skill | 80% → **98%** | 20/36 → **34/36** | 23 / 11 / 2 |
 
 **How to read this:**
 
-- **It consistently helps.** On all three sets, replies with the skill meet more criteria and win the blind head-to-head comparison more often. The largest gains are in Range and Altitude, which models rarely bring up unprompted. Guardrails held in every run: no scope creep on narrow requests, emergencies, declined ideas or personal creative work.
-- **The second held-out set is the honest number.** It was written by an agent that never saw the skill and was kept out of the tuning loop. The gain there (81% → 89%) is smaller than on the author's own scenarios, as you'd expect.
-- **Known gaps.** Range sometimes uses a borrowed technique without naming its field; Depth occasionally offers several checks instead of one; Altitude sometimes speeds up the task instead of addressing its root cause. Some misses are general (inventing placeholder facts, a missing safety note) and affect both versions.
-- **What we changed along the way.** Earlier runs showed the skill withholding the requested work and labelling ideas with framework terms ("That's an Altitude shift"), which judges read as jargon. Removing the label alone moved the head-to-head on held-out set 1 from 9 to 28 wins out of 40 (`evals/rejudge_without_label.py`).
+- **Trust the top row most.** Set 3 was written by an agent that never saw the skill, and no change was made in response to it. There, the skill raises criteria met from 74% to 89%, and the judge prefers its reply 28 times out of 40 (9 for the plain model, 3 ties).
+- **It helps across every type.** The biggest gains are Range and Speed, ideas models rarely offer unprompted. Guardrails held throughout: no scope creep on a 10-minute deadline, a $0 budget, a pure factual question, emergencies, or personal creative work.
+- **Known gaps** (from set 3): the extra idea sometimes grows into several ideas or a long paragraph; Range sometimes uses a borrowed technique without naming its field; Altitude sometimes targets a nearby problem rather than the recurring one.
+- **What we changed along the way.** Earlier versions withheld the requested work and labelled ideas with framework terms ("That's an Altitude shift"), which judges read as jargon. Removing the label alone moved the head-to-head on set 1 from 9 to 28 wins out of 40 (`evals/rejudge_without_label.py`). Later rounds added a pre-send check per type, placeholders instead of invented facts, and safety notes where harm is plausible.
 
 One model pairing is evidence, not proof. Every reply and verdict is in [`evals/results/`](evals/results/).
 <!-- EVAL_TABLE_END -->
@@ -57,7 +58,7 @@ Re-run it yourself on any OpenAI-compatible endpoint:
 ```sh
 EVAL_BASE_URL=<openai-compatible-endpoint>/v1 \
 EVAL_SUBJECT_MODEL=<model> EVAL_JUDGE_MODEL=<different-or-stronger-model> \
-python3 evals/run_eval.py --scenarios evals/holdout2.json --reps 2 --out evals/results/my-run
+python3 evals/run_eval.py --scenarios evals/holdout3.json --reps 2 --out evals/results/my-run
 ```
 
 ## Install
@@ -90,7 +91,7 @@ references/
   source-notice.md     Rights and attribution for the quoted article text
 evals/
   scenarios.json       18 author-written test cases with pass criteria
-  holdout*.json        Two independent sets of 20, written without seeing the skill
+  holdout*.json        Three independent sets of 20, written without seeing the skill
   run_eval.py          With/without-skill runner and blind judge (stdlib only)
   rejudge_without_label.py  Diagnostic used to measure the cost of type labels
   results/             Recorded runs: raw replies, verdicts, summary
