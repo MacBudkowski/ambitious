@@ -1,0 +1,464 @@
+[
+  {
+    "id": "willison-starlette-strip-html",
+    "pillar": "depth",
+    "prompt": "Starlette web app that provides an API where you pass in ?url= and it strips all HTML tags and returns just the text, using beautifulsoup",
+    "source": {
+      "author": "Simon Willison",
+      "url": "https://simonwillison.net/2024/Dec/19/one-shot-python-tools/",
+      "title": "Building Python tools with a one-shot prompt using uv run and Claude Projects",
+      "date": "2024-12-19"
+    },
+    "pass_criteria": [
+      "Provides a working Starlette app with an endpoint taking ?url=, fetching the page, and returning text extracted with BeautifulSoup",
+      "Briefly flags a safety concern an experienced web engineer would raise (e.g. SSRF risk of fetching arbitrary URLs, so restrict internal addresses/timeouts/size limits), accepting equivalent hardening notes",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_famous"
+  },
+  {
+    "id": "harper-missing-tests",
+    "pillar": "depth",
+    "prompt": "You are a senior developer. Your job is to review this code, and write out a list of missing test cases, and code tests that should exist. You should be specific, and be very good. Do Not Hallucinate. Think quietly to yourself, then act - write the issues. The issues  will be given to a developer to executed on, so they should be in a format that is compatible with github issues",
+    "source": {
+      "author": "Harper Reed",
+      "url": "https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/",
+      "title": "My LLM codegen workflow atm",
+      "date": "2025-02-16"
+    },
+    "pass_criteria": [
+      "Asks for the code if it is not provided, or produces specific missing-test issues formatted as GitHub issues (title, description, acceptance criteria)",
+      "Does not invent functions or behavior that aren't in the provided code",
+      "Suggests one expert-level way to find gaps beyond eyeballing (e.g. coverage report, mutation testing, or property-based tests for edge cases), accepting equivalents",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_famous"
+  },
+  {
+    "id": "mollick-gpt5-startup-ideas",
+    "pillar": "depth",
+    "prompt": "generate 10 startup ideas for a former business school entrepreneurship professor to launch, pick the best according to some rubric, figure out what I need to do to win, do it.",
+    "source": {
+      "author": "Ethan Mollick",
+      "url": "https://www.oneusefulthing.org/p/gpt-5-it-just-does-stuff",
+      "title": "GPT-5: It Just Does Stuff",
+      "date": "2025-08-07"
+    },
+    "pass_criteria": [
+      "Generates 10 ideas, defines a rubric, picks a winner, and lays out a concrete plan and starting deliverables for it",
+      "Suggests a cheap way to validate the chosen idea against reality before committing (e.g. talking to 10 target customers or a landing-page/pre-sale test), accepting equivalents",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_famous"
+  },
+  {
+    "id": "mollick-claude-code-1000-a-month",
+    "pillar": "altitude",
+    "prompt": "Develop a web-based or software-based startup idea that will make me $1000 a month where you do all the work by generating the idea and implementing it. i shouldn’t have to do anything at all except run some program you give me once. it shouldn’t require any coding knowledge on my part, so make sure everything works well.",
+    "source": {
+      "author": "Ethan Mollick",
+      "url": "https://www.oneusefulthing.org/p/claude-code-and-what-comes-next",
+      "title": "Claude Code and What Comes Next",
+      "date": "2026-01-07"
+    },
+    "pass_criteria": [
+      "Proposes a specific idea and gives a concrete, runnable implementation or setup steps a non-coder could follow",
+      "Is honest that income isn't guaranteed and that some non-code tasks (accounts, payments, hosting) may need the user",
+      "Points at the real bottleneck behind the goal (e.g. getting traffic/customers or validating demand before building), accepting equivalents",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_famous"
+  },
+  {
+    "id": "mollick-critique-paper",
+    "pillar": "depth",
+    "prompt": "critique the methods of this paper, figure out better methods and apply them.",
+    "source": {
+      "author": "Ethan Mollick",
+      "url": "https://www.oneusefulthing.org/p/on-working-with-wizards",
+      "title": "On Working with Wizards",
+      "date": "2025-09-11"
+    },
+    "pass_criteria": [
+      "Asks for the paper if not attached, or gives a specific methods critique with proposed better methods (with placeholders rather than invented results)",
+      "Does not fabricate data, results, or re-analysis outputs it cannot compute",
+      "Suggests a way to validate the improved methods (e.g. robustness/placebo tests, simulation recovering a known effect, or review by a methods specialist), accepting equivalents",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_famous"
+  },
+  {
+    "id": "mollick-cheese-shop-powerpoint",
+    "pillar": "altitude",
+    "prompt": "great, now make a good PowerPoint for this business",
+    "source": {
+      "author": "Ethan Mollick",
+      "url": "https://www.oneusefulthing.org/p/on-working-with-wizards",
+      "title": "On Working with Wizards",
+      "date": "2025-09-11"
+    },
+    "pass_criteria": [
+      "Produces a deck outline/slide content (or python-pptx code) for the cheese shop business using any model details in context, or asks for them / uses placeholders without inventing figures",
+      "Slides follow a sensible business-deck structure (problem/offer, market, model, financials, ask)",
+      "Notes that the deck's purpose/audience (e.g. bank loan vs investor vs partner) should shape it and offers to tailor, accepting equivalents",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_famous"
+  },
+  {
+    "id": "openai-sales-draft-a-personalized-cold-outreach-email",
+    "pillar": "altitude",
+    "prompt": "Write a short, compelling cold email to a [job title] at [company name] introducing our product. Use the background below to customize it. Background: [insert value props or ICP info]. Format it in email-ready text.",
+    "source": {
+      "collection": "OpenAI Academy: ChatGPT for Sales",
+      "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-sales",
+      "ref": "Outreach & communication / use case: Draft a personalized cold outreach email"
+    },
+    "pass_criteria": [
+      "Provides a short, email-ready cold email with subject line, or asks for the missing background (may ask for missing details or use clearly marked placeholders, without inventing specifics)",
+      "Email is concise, leads with value to the recipient's role, and ends with one clear low-friction ask",
+      "Offers one concrete idea aimed at actually getting replies beyond this single email (e.g. a brief 2-3 touch follow-up plan or a variant to test; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "openai-for-managers-draft-quarterly-goals",
+    "pillar": "depth",
+    "prompt": "Draft clear and measurable quarterly goals for my team. Here is the business context, company objectives, and recent performance: [insert context]. Return 3 Objectives with 3-4 Key Results each, in a simple bullet format.",
+    "source": {
+      "collection": "OpenAI Academy: ChatGPT for Managers",
+      "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-for-managers",
+      "ref": "Strategic planning & alignment / use case: Draft quarterly goals"
+    },
+    "pass_criteria": [
+      "Returns 3 objectives with 3-4 key results each in bullets, or asks for the context / gives a placeholder template (may ask for missing details or use clearly marked placeholders, without inventing specifics)",
+      "Key results are measurable (metric, target, timeframe) rather than task lists",
+      "Adds one expert-level improvement (e.g. set baselines for each KR, or distinguish outcome KRs from activity/output; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "openai-for-managers-create-a-1-1-template",
+    "pillar": "altitude",
+    "prompt": "Draft a 1:1 meeting template for my direct reports. I want it to include check-ins on progress, roadblocks, career growth, and feedback. Format it as a bulleted agenda with guiding questions.",
+    "source": {
+      "collection": "OpenAI Academy: ChatGPT for Managers",
+      "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-for-managers",
+      "ref": "Managerial coaching & performance enablement / use case: Create a 1:1 template"
+    },
+    "pass_criteria": [
+      "Provides a bulleted 1:1 agenda covering progress, roadblocks, career growth, and feedback, each with guiding questions",
+      "Questions are open-ended and usable as-is",
+      "Suggests one concrete way to make 1:1s compound over time (e.g. a shared running doc so action items carry over and get followed up; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "openai-any-role-summarize-meeting-notes",
+    "pillar": "altitude",
+    "prompt": "Summarize these meeting notes into a structured recap. The notes are rough and informal. Organize them into categories: key decisions, next steps, and responsibilities. Notes: [paste text].",
+    "source": {
+      "collection": "OpenAI Academy: ChatGPT for any role (For Work Prompt Pack)",
+      "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/chatgpt-for-any-role",
+      "ref": "use case: Summarize meeting notes"
+    },
+    "pass_criteria": [
+      "Asks for the notes, or provides the requested structure (key decisions, next steps, responsibilities) ready to fill (may ask for missing details or use clearly marked placeholders, without inventing specifics)",
+      "Does not invent meeting content",
+      "Suggests one concrete step that makes the recap drive follow-through (e.g. flag any next step lacking an owner or due date; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "openai-marketing-draft-a-product-launch-email",
+    "pillar": "depth",
+    "prompt": "Write a launch email for our new product. Use the following info about the product and target audience: [insert details]. Make it engaging and persuasive, formatted as a marketing email ready for review.",
+    "source": {
+      "collection": "OpenAI Academy: ChatGPT for Marketing",
+      "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-marketing",
+      "ref": "use case: Draft a product launch email"
+    },
+    "pass_criteria": [
+      "Provides a marketing-ready launch email, or asks for product/audience details / gives a placeholder draft (may ask for missing details or use clearly marked placeholders, without inventing specifics)",
+      "Email is engaging and persuasive with a clear subject line and CTA",
+      "Offers one practitioner-level improvement (e.g. 2-3 alternative subject lines to A/B test, or a segment-specific variant; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "openai-finance-model-cash-flow-scenarios",
+    "pillar": "depth",
+    "prompt": "Model 3 cash flow scenarios based on these variables: [insert inputs such as revenue range, delays, or costs]. Output as a table with assumptions, key drivers, and estimated cash impact.",
+    "source": {
+      "collection": "OpenAI Academy: ChatGPT for Finance",
+      "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-finance",
+      "ref": "use case: Model cash flow scenarios"
+    },
+    "pass_criteria": [
+      "Produces a 3-scenario table with assumptions, key drivers, and estimated cash impact, or asks for the inputs / gives a placeholder structure (may ask for missing details or use clearly marked placeholders, without inventing specifics)",
+      "Scenarios are internally consistent and assumptions are explicit; does not present invented numbers as the user's data",
+      "Suggests one method a finance expert would use to make the model more decision-useful (e.g. a sensitivity on the biggest driver, or a weekly/13-week cash view showing the low point; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "anthropic-corporate-clairvoyant",
+    "pillar": "depth",
+    "prompt": "Your task is to analyze the following report:  \n<report>  \n[Full text of [Matterport SEC filing 10-K 2023](https://investors.matterport.com/node/9501/html), not pasted here for brevity]  \n</report>  \n  \nSummarize this annual report in a concise and clear manner, and identify key market trends and takeaways. Output your findings as a short memo I can send to my team. The goal of the memo is to ensure my team stays up to date on how financial institutions are faring and qualitatively forecast and identify whether there are any operating and revenue risks to be expected in the coming quarter. Make sure to include all relevant details in your summary and analysis.",
+    "source": {
+      "collection": "Anthropic Prompt Library",
+      "url": "https://docs.anthropic.com/en/prompt-library/corporate-clairvoyant (via Wayback snapshot; live page now redirects)",
+      "ref": "User message in API request example"
+    },
+    "pass_criteria": [
+      "Notes the report text is not actually included and asks for it, or offers a clearly-labeled memo structure without fabricating filing figures",
+      "Does not invent specific financial numbers or claims about the filing",
+      "Offers one analyst-grade improvement for the memo (e.g. compare year-over-year figures and guidance, or pull from the risk-factors and MD&A sections specifically; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "wildchat-1m-123434",
+    "pillar": "depth",
+    "prompt": "make a health and safety policy for a factory",
+    "source": {
+      "collection": "WildChat-1M",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=123400&length=100",
+      "ref": "row_idx=123434; conversation_hash=87d80d64a6f7bc004460f64d37e2d143"
+    },
+    "pass_criteria": [
+      "Provides a usable health and safety policy draft for a factory (statement of intent, responsibilities, arrangements such as risk assessment, training, PPE, incident reporting, emergency procedures)",
+      "Uses placeholders for company-specific details rather than inventing them",
+      "Suggests one expert step that makes the policy valid and effective (e.g. align it with the local legal requirements/regulator or ISO 45001 and back it with site risk assessments; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "wildchat-1m-123468",
+    "pillar": "speed",
+    "prompt": "Web scrape turbo.az with python and beatifulsoup",
+    "source": {
+      "collection": "WildChat-1M",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=123400&length=100",
+      "ref": "row_idx=123468; conversation_hash=fc2e51d0cb8f520eb5f4e21606b2bce8"
+    },
+    "pass_criteria": [
+      "Provides working-shaped Python code using requests + BeautifulSoup to fetch and parse turbo.az listings (with selectors labeled as needing verification)",
+      "Includes basics like a User-Agent header and polite delays; may briefly note checking the site's terms/robots.txt",
+      "Mentions one faster/more robust route (e.g. check the browser network tab for a JSON endpoint the listings load from; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "wildchat-1m-50691",
+    "pillar": "depth",
+    "prompt": "Create a Lesson plan for grades kinder-2nd. Kids must create a dance of the butterfly lifecycle.",
+    "source": {
+      "collection": "WildChat-1M",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=50631&length=100",
+      "ref": "row_idx=50691; conversation_hash=766ec526a20ff02825acd4425bcb8281"
+    },
+    "pass_criteria": [
+      "Provides a K-2 lesson plan where kids create a dance of the butterfly lifecycle (egg, caterpillar, chrysalis, butterfly), with objectives, materials, steps, and timing",
+      "Activities are age-appropriate and include movement prompts for each stage",
+      "Adds one expert-teacher element (e.g. alignment to a science/arts standard, a simple assessment/checklist, or differentiation for younger students; equivalents accepted)",
+      "Keeps any extra idea brief and optional"
+    ],
+    "set": "real_popular"
+  },
+  {
+    "id": "dental-noshow-text",
+    "pillar": "speed",
+    "prompt": "every monday i go thru last weeks schedule and text each no-show patient one by one to rebook their cleaning. takes me like 2 hrs. can u write the text msg i send them? keep it friendly not guilt trippy",
+    "pass_criteria": [
+      "Provides a short, friendly, non-guilt-inducing rebooking text message",
+      "Offers one concrete way to cut the 2 hours of manual work (e.g., a merge-field template sent in a batch, or automated no-show messages from the scheduling system), not a list of many ideas",
+      "Does not assert that a specific practice-management product has a particular feature as fact; hedges or tells the user to check",
+      "Keeps the extra suggestion brief and does not withhold the requested message"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "wedding-photo-gallery-email",
+    "pillar": "speed",
+    "prompt": "I'm a wedding photographer, about 30 weddings a year. After each wedding I write the couple an email with their gallery link, how long downloads stay up, print ordering info, and a review request. I rewrite it from scratch every time and it takes me 45 minutes because I want it to feel personal. Can you write this one? Couple is Maya & Tomasz, venue was a vineyard, it rained during the ceremony and they danced in it anyway.",
+    "pass_criteria": [
+      "Writes a warm, personal email for Maya & Tomasz that references the vineyard and the rain dance",
+      "Includes gallery link, download window, print ordering, and review request, with unknown specifics (link, dates, prices) marked as placeholders rather than invented",
+      "Offers one concrete way to make future emails faster while staying personal (e.g., a reusable template with a short personal-details slot), as a single suggestion"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "recipe-blog-unit-conversion",
+    "pillar": "speed",
+    "prompt": "Convert to grams pls: 2 1/4 cups all-purpose flour, 1 cup packed brown sugar, 1/2 cup granulated sugar, 1 cup butter. (I have ~200 recipes on my blog that still only have cups and readers keep asking for metric.)",
+    "pass_criteria": [
+      "Gives gram conversions for all four ingredients with reasonable values (roughly: flour ~280-300 g, packed brown sugar ~200-220 g, granulated sugar ~100 g, butter ~225-227 g) and notes conversions are approximate by ingredient",
+      "Offers one concrete approach to handle the other ~200 recipes faster than one-by-one (e.g., a reusable ingredient-to-grams lookup table applied in bulk), not a long list",
+      "Does not claim a particular blog plugin or tool will do it automatically without hedging"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "hvac-replacement-quote",
+    "pillar": "speed",
+    "prompt": "HVAC guy here. need a customer quote for replacing a 3 ton AC condenser + matching coil, includes removal of old unit, new pad, line set flush, permit, 1 yr labor warranty. I type these up in Word from nothing every time, ~40 min each, I do maybe 6 a week",
+    "pass_criteria": [
+      "Produces a clear, customer-ready quote covering all listed line items",
+      "Marks prices, brand/model, customer details, and permit costs as placeholders rather than inventing numbers",
+      "Offers one concrete speed-up for the ~6 quotes a week (e.g., a reusable quote template with standard line items and fill-in fields), kept brief"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "newsletter-subject-lines",
+    "pillar": "depth",
+    "prompt": "Need 5 subject line options for this week's issue of my newsletter (~12k subs, indie game dev news). Main story: a solo dev's game hit 1M sales after being rejected by 9 publishers. Our open rate is usually around 38% and I want to push it higher.",
+    "pass_criteria": [
+      "Provides 5 distinct subject lines tied to the main story",
+      "Offers one more rigorous way to know what actually works, such as a split test on a portion of the list, or questioning open rate as the metric (e.g., opens being inflated by mail privacy features) in favor of clicks",
+      "Does not guarantee any subject line will raise the open rate",
+      "Keeps to one main extra suggestion rather than a multi-part strategy"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "ml-prediction-drift-alert",
+    "pillar": "depth",
+    "prompt": "Write a Python function that takes two lists of predicted probabilities (last week vs this week) from our fraud model and returns True if the mean shifted by more than 0.05. We'll run it on a cron and page someone if it's True.",
+    "pass_criteria": [
+      "Provides a working Python function implementing the requested mean-shift check",
+      "Suggests one more rigorous check, such as comparing full distributions (e.g., PSI or a KS test), monitoring calibration, or checking against real labels when they arrive, and briefly says why a mean shift alone can miss problems",
+      "Does not claim the 0.05 threshold is validated; notes it should be tuned against historical data or false-page rate"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "manufacturing-zero-defects",
+    "pillar": "depth",
+    "prompt": "We pull 5 parts from every batch of 2,000 for dimensional inspection. Haven't had a single failure in 3 months (about 60 batches). Can I tell the customer our defect rate is basically zero? Want to put it in the quarterly quality summary.",
+    "pass_criteria": [
+      "Directly answers that zero observed failures in ~300 sampled parts does not show a near-zero rate, and gives a rough upper bound (e.g., the rule of three gives roughly 1% at 95% confidence)",
+      "Suggests wording for the summary that is honest about the sample",
+      "Offers one concrete, more rigorous approach, such as a standard acceptance sampling plan or statistical process control on the measured dimensions instead of pass/fail",
+      "Does not overstate the actual defect rate in either direction"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "office-led-savings",
+    "pillar": "depth",
+    "prompt": "how much would we save switching our office to LED? we have 120 fluorescent tubes. boss wants a number by tmrw",
+    "pass_criteria": [
+      "Gives a worked estimate or formula with clearly stated assumptions (tube wattage, LED wattage, hours per year, electricity rate), marking unknown values as placeholders or explicit assumptions rather than presenting them as facts",
+      "Offers one way to make the number more trustworthy, such as using actual utility bills or metering a circuit before and after, or a small pilot",
+      "Does not guarantee the savings figure",
+      "Still delivers something usable by tomorrow and does not stall on the suggestion"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "vet-waiting-room-chaos",
+    "pillar": "range",
+    "prompt": "Our vet practice waiting room is a mess. Dogs lunge at cats, cats are stressed out of their minds, and everyone's crammed in one 4x6m room with a single front desk. Any ideas for how to lay it out better?",
+    "pass_criteria": [
+      "Gives practical layout advice for the stated room (e.g., separate species zones, visual barriers, raised spots for carriers)",
+      "Offers one concrete technique borrowed from another field (e.g., restaurant-style wait-in-the-car paging, or airline-style staggered boarding/arrival windows) and explains how it would work here",
+      "Presents borrowed ideas as methods to apply, not as role-playing an outside expert",
+      "Keeps it to one main cross-field idea rather than a long list"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "music-school-practice-habit",
+    "pillar": "range",
+    "prompt": "I teach piano to kids 7-12 at a small music school. Half of them clearly don't touch the piano between weekly lessons. How do I get them to actually practice?",
+    "pass_criteria": [
+      "Gives age-appropriate, practical advice on getting kids to practice",
+      "Brings in one concrete technique from another field (e.g., habit-formation methods like tying practice to an existing routine, game-design progress loops, or sports-coaching short drill logs) and shows how to apply it to piano",
+      "Does not claim a specific technique will definitely work; frames it as something to try and observe",
+      "Does not turn into a broad list of many unrelated tactics"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "transit-detour-missed-stop",
+    "pillar": "range",
+    "prompt": "Route 14 is detoured for 6 weeks due to bridge work. We posted notices on the old stop and online but riders keep standing at the closed stop and missing the temporary one a block away. Write a better notice for the closed stop.",
+    "pass_criteria": [
+      "Writes a clear, short notice for the closed stop that points riders to the temporary stop",
+      "Marks unknown specifics (street names, dates, contact info) as placeholders rather than inventing them",
+      "Offers one concrete idea borrowed from another field's wayfinding or signage practice (e.g., hospital-style ground markings or arrows from the old stop to the new one), described concretely",
+      "Keeps the extra idea to a single brief suggestion"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "peer-support-shift-handoff",
+    "pillar": "range",
+    "prompt": "We run a peer support text line for people going through grief. Shift changes are messy — the outgoing peer supporter leaves a few notes in a shared doc, and the incoming one often misses that someone was in a fragile state earlier. Can you give me a better handoff template?",
+    "pass_criteria": [
+      "Provides a usable handoff template suited to a grief peer-support line",
+      "Adapts one concrete structured-handoff method from another field (e.g., the SBAR format used in clinical handoffs, or a read-back step borrowed from aviation) and explains the adaptation",
+      "Mentions or builds in a way to flag people currently at elevated risk without the assistant giving clinical diagnoses",
+      "Does not overload the reply with multiple competing frameworks"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "airline-crew-rest-dispute",
+    "pillar": "altitude",
+    "prompt": "flight attendant here, scheduling gave me 9h50m rest between my last two pairings, I'm pretty sure our contract says min 10h. this is the third time this quarter. help me write a short message to crew scheduling disputing it",
+    "pass_criteria": [
+      "Drafts a short, professional dispute message with placeholders for dates, pairing numbers, and the exact contract section",
+      "Does not state specific contract or regulatory rest rules as fact; tells the user to cite their own contract",
+      "Offers one higher-level step aimed at the recurring pattern rather than just this instance (e.g., keeping a log of short-rest pairings and taking the pattern to the union rep), kept brief"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "property-mgmt-heating-complaint",
+    "pillar": "altitude",
+    "prompt": "Tenant in 4B emailed again that the radiator in the bedroom isn't heating. Third complaint since October. We manage 3 buildings, about 60 units, all with the same old steam heat. Draft me a reply to 4B saying a tech is coming Thursday.",
+    "pass_criteria": [
+      "Drafts a courteous reply to 4B confirming a Thursday tech visit, with placeholders for the time window and contact",
+      "Offers one concrete step aimed at the outcome across buildings (e.g., a pre-season inspection or bleeding schedule for all units, or tracking repeat heating tickets by building to find the root cause) rather than just this repair",
+      "Does not promise the tenant a fix date or outcome beyond what the user stated",
+      "Keeps the extra suggestion to one short item"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "procurement-chair-quotes",
+    "pillar": "altitude",
+    "prompt": "Compare these quotes for 40 office chairs:\nA: $289/chair, 2yr warranty, ships in 2 weeks\nB: $310/chair, 10yr warranty, ships in 3 weeks\nC: $265/chair, 1yr warranty, ships in 8 weeks\nWhich one should I pick?",
+    "pass_criteria": [
+      "Computes totals correctly (A $11,560; B $12,400; C $10,600) and gives a reasoned recommendation tied to warranty and lead time",
+      "Offers one higher-level framing, such as comparing cost per year of warranty or total cost of ownership, or setting up a preferred-vendor agreement if chairs are bought regularly",
+      "Does not invent facts about the vendors beyond the given data; asks or uses placeholders for unknowns like shipping costs"
+    ],
+    "set": "holdout3"
+  },
+  {
+    "id": "cybersec-phishing-warning",
+    "pillar": "altitude",
+    "prompt": "Someone in accounting clicked a fake invoice link yesterday (we caught it, no damage). Write an all-staff email warning people about fake invoice phishing. ~150 staff, not very techy.",
+    "pass_criteria": [
+      "Writes a clear, non-blaming, plain-language all-staff warning with concrete signs of fake invoices and what to do",
+      "Does not name or shame the person who clicked",
+      "Offers one step aimed at reducing clicks across the organization over time (e.g., an easy report-suspicious-email process with tracked report rates, or periodic simulated phishing), kept to a single suggestion",
+      "Marks company-specific details (reporting contact, IT address) as placeholders"
+    ],
+    "set": "holdout3"
+  }
+]

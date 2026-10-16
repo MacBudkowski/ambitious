@@ -52,7 +52,7 @@ def skill_system() -> str:
     return "\n".join(parts)
 
 
-def chat(model: str, system: str, user: str, max_tokens: int = 4000, temperature: float = 0.7) -> str:
+def chat(model: str, system: str, user: str, max_tokens: int = 16000, temperature: float = 0.7) -> str:
     base = os.environ.get("EVAL_BASE_URL", "http://127.0.0.1:8317/v1").rstrip("/")
     body = json.dumps({
         "model": model,

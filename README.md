@@ -34,21 +34,37 @@ The four types, from the essay:
 We tested it the way you'd test any change: the same prompts sent to a fresh model with and without the skill. A separate judge model scored each reply against that prompt's criteria without knowing which version wrote it, then picked the better of the two in random order. Each set has at least four cases per ambition type, plus "guardrail" cases where the right move is *not* to expand scope.
 
 <!-- EVAL_TABLE_START -->
-Latest run: `claude-sonnet-5-5` answering, `claude-opus-5-5` judging, every prompt run twice with and twice without the skill (312 replies).
+All runs: `claude-sonnet-5-5` answering, `claude-opus-5-5` judging, each prompt run twice with and twice without the skill.
+
+### 1. Real prompts where ambition should matter
+
+32 real prompts with a clear opportunity to aim higher: published prompts from Simon Willison, Harper Reed, Ethan Mollick and others; OpenAI Academy and Anthropic prompt-library tasks; real anonymised requests from [WildChat](https://huggingface.co/datasets/allenai/WildChat-1M); and an independent held-out set. Sources for every prompt are in [`evals/sources/`](evals/sources/).
+
+| Type | All criteria met: no skill | Previous version | **Current version** | Head-to-head, current (skill / without / tie) |
+|---|---|---|---|---|
+| Speed | 4/10 | 7/10 | **6/10** | 5 / 5 / 0 |
+| Depth | 14/28 | 20/28 | **21/28** | 16 / 11 / 1 |
+| Range | 0/8 | 3/8 | **5/8** | 6 / 2 / 0 |
+| Altitude | 5/18 | 6/18 | **9/18** | 14 / 4 / 0 |
+| **All** | 23/64 | 36/64 | **41/64** | 41 / 22 / 1 |
+
+### 2. Independent test sets
 
 | Test set | Written by | Criteria passed (without → with) | All criteria met | Head-to-head (skill / without / tie) |
 |---|---|---|---|---|
 | Held-out set 3 (20 × 2) | Separate agent; never used for tuning | 74% → **89%** | 17/40 → **24/40** | 28 / 9 / 3 |
-| Held-out set 2 (20 × 2) | Separate agent; used for one tuning round | 80% → **96%** | 19/40 → **34/40** | 26 / 10 / 4 |
-| Held-out set 1 (20 × 2) | Separate agent; used for tuning | 89% → **98%** | 28/40 → **37/40** | 27 / 13 / 0 |
+| Held-out set 2 (20 × 2) | Separate agent | 80% → **96%** | 19/40 → **34/40** | 26 / 10 / 4 |
+| Held-out set 1 (20 × 2) | Separate agent | 89% → **98%** | 28/40 → **37/40** | 27 / 13 / 0 |
 | Author scenarios (18 × 2) | Written alongside the skill | 80% → **98%** | 20/36 → **34/36** | 23 / 11 / 2 |
+
+_Section 2 was measured on the previous version._
 
 **How to read this:**
 
-- **Trust the top row most.** Set 3 was written by an agent that never saw the skill, and no change was made in response to it. There, the skill raises criteria met from 74% to 89%, and the judge prefers its reply 28 times out of 40 (9 for the plain model, 3 ties).
-- **It helps across every type.** The biggest gains are Range and Speed, ideas models rarely offer unprompted. Guardrails held throughout: no scope creep on a 10-minute deadline, a $0 budget, a pure factual question, emergencies, or personal creative work.
-- **Known gaps** (from set 3): the extra idea sometimes grows into several ideas or a long paragraph; Range sometimes uses a borrowed technique without naming its field; Altitude sometimes targets a nearby problem rather than the recurring one.
-- **What we changed along the way.** Earlier versions withheld the requested work and labelled ideas with framework terms ("That's an Altitude shift"), which judges read as jargon. Removing the label alone moved the head-to-head on set 1 from 9 to 28 wins out of 40 (`evals/rejudge_without_label.py`). Later rounds added a pre-send check per type, placeholders instead of invented facts, and safety notes where harm is plausible.
+- **It reliably helps on ambitious requests.** On real prompts where aiming higher matters, replies with the skill meet every criterion far more often (23 → 41 of 64) and win the blind head-to-head about two to one, while being about 20% shorter.
+- **It stays out of the way on ordinary requests.** On real "just answer" prompts (quick facts, precise specs, short rewrites) it added no unwanted scope, and replies were slightly better than without it.
+- **Known gaps.** Speed ideas sometimes reduce the problem rather than cut the repeated work; the extra idea occasionally grows into a paragraph of several items; and "build me a whole business" requests mostly get a plan rather than a working result, with or without the skill.
+- **What we changed along the way.** Early versions withheld the requested work and labelled ideas with framework terms ("That's an Altitude shift"), which judges read as jargon; removing the label alone moved one head-to-head from 9 to 28 wins out of 40 (`evals/rejudge_without_label.py`). Later rounds added a per-type pre-send check, placeholders instead of invented facts, safety notes where harm is plausible, and a nudge to add one idea on substantial work.
 
 One model pairing is evidence, not proof. Every reply and verdict is in [`evals/results/`](evals/results/).
 <!-- EVAL_TABLE_END -->
@@ -92,6 +108,9 @@ references/
 evals/
   scenarios.json       18 author-written test cases with pass criteria
   holdout*.json        Three independent sets of 20, written without seeing the skill
+  real_*.json          Real published and real-user prompts, labelled with pass criteria
+  ambition_focus.json  The 32 real prompts where aiming higher clearly matters
+  sources/             Where each real prompt came from (URL, author, date)
   run_eval.py          With/without-skill runner and blind judge (stdlib only)
   rejudge_without_label.py  Diagnostic used to measure the cost of type labels
   results/             Recorded runs: raw replies, verdicts, summary

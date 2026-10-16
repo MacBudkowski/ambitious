@@ -1,0 +1,299 @@
+[
+  {
+    "id": "openai-sales-draft-a-personalized-cold-outreach-email",
+    "collection": "OpenAI Academy: ChatGPT for Sales",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-sales",
+    "source_ref": "Outreach & communication / use case: Draft a personalized cold outreach email",
+    "prompt": "Write a short, compelling cold email to a [job title] at [company name] introducing our product. Use the background below to customize it. Background: [insert value props or ICP info]. Format it in email-ready text.",
+    "needs_attachment": true,
+    "notes": "Template prompt with [bracketed] placeholders; expects pasted/attached content"
+  },
+  {
+    "id": "openai-sales-rework-demo-follow-up-email",
+    "collection": "OpenAI Academy: ChatGPT for Sales",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-sales",
+    "source_ref": "Outreach & communication / use case: Rework demo follow-up email",
+    "prompt": "Rewrite this follow-up email after a demo to sound more consultative. Original email: [paste here]. Include recap, next steps, and call scheduling CTA. Output as email text.",
+    "needs_attachment": true,
+    "notes": "Template prompt with [bracketed] placeholders; expects pasted/attached content"
+  },
+  {
+    "id": "openai-for-managers-draft-quarterly-goals",
+    "collection": "OpenAI Academy: ChatGPT for Managers",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-for-managers",
+    "source_ref": "Strategic planning & alignment / use case: Draft quarterly goals",
+    "prompt": "Draft clear and measurable quarterly goals for my team. Here is the business context, company objectives, and recent performance: [insert context]. Return 3 Objectives with 3-4 Key Results each, in a simple bullet format.",
+    "needs_attachment": true,
+    "notes": "Template prompt with [bracketed] placeholders; expects pasted/attached content"
+  },
+  {
+    "id": "openai-for-managers-create-a-1-1-template",
+    "collection": "OpenAI Academy: ChatGPT for Managers",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-for-managers",
+    "source_ref": "Managerial coaching & performance enablement / use case: Create a 1:1 template",
+    "prompt": "Draft a 1:1 meeting template for my direct reports. I want it to include check-ins on progress, roadblocks, career growth, and feedback. Format it as a bulleted agenda with guiding questions.",
+    "needs_attachment": false,
+    "notes": "Template prompt with [bracketed] placeholders; placeholders only"
+  },
+  {
+    "id": "openai-any-role-write-a-professional-email",
+    "collection": "OpenAI Academy: ChatGPT for any role (For Work Prompt Pack)",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/chatgpt-for-any-role",
+    "source_ref": "use case: Write a professional email",
+    "prompt": "Write a professional email to [recipient]. The email is about [topic] and should be polite, clear, and concise. Provide a subject line and a short closing.",
+    "needs_attachment": false,
+    "notes": "Template prompt with [bracketed] placeholders; placeholders only"
+  },
+  {
+    "id": "openai-any-role-rewrite-for-clarity",
+    "collection": "OpenAI Academy: ChatGPT for any role (For Work Prompt Pack)",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/chatgpt-for-any-role",
+    "source_ref": "use case: Rewrite for clarity",
+    "prompt": "Rewrite the following text so it is easier to understand. The text will be used in a professional setting. Ensure the tone is clear, respectful, and concise. Text: [paste text].",
+    "needs_attachment": true,
+    "notes": "Template prompt with [bracketed] placeholders; expects pasted/attached content"
+  },
+  {
+    "id": "openai-any-role-summarize-meeting-notes",
+    "collection": "OpenAI Academy: ChatGPT for any role (For Work Prompt Pack)",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/chatgpt-for-any-role",
+    "source_ref": "use case: Summarize meeting notes",
+    "prompt": "Summarize these meeting notes into a structured recap. The notes are rough and informal. Organize them into categories: key decisions, next steps, and responsibilities. Notes: [paste text].",
+    "needs_attachment": true,
+    "notes": "Template prompt with [bracketed] placeholders; expects pasted/attached content"
+  },
+  {
+    "id": "openai-marketing-brainstorm-campaign-ideas",
+    "collection": "OpenAI Academy: ChatGPT for Marketing",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-marketing",
+    "source_ref": "use case: Brainstorm campaign ideas",
+    "prompt": "Brainstorm 5 creative campaign ideas for our upcoming [event/launch]. The audience is [insert target], and our goal is [insert goal]. Include a theme, tagline, and 1-2 core tactics per idea.",
+    "needs_attachment": false,
+    "notes": "Template prompt with [bracketed] placeholders; placeholders only"
+  },
+  {
+    "id": "openai-marketing-draft-a-product-launch-email",
+    "collection": "OpenAI Academy: ChatGPT for Marketing",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-marketing",
+    "source_ref": "use case: Draft a product launch email",
+    "prompt": "Write a launch email for our new product. Use the following info about the product and target audience: [insert details]. Make it engaging and persuasive, formatted as a marketing email ready for review.",
+    "needs_attachment": true,
+    "notes": "Template prompt with [bracketed] placeholders; expects pasted/attached content"
+  },
+  {
+    "id": "openai-finance-model-cash-flow-scenarios",
+    "collection": "OpenAI Academy: ChatGPT for Finance",
+    "source_url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/use-cases-finance",
+    "source_ref": "use case: Model cash flow scenarios",
+    "prompt": "Model 3 cash flow scenarios based on these variables: [insert inputs such as revenue range, delays, or costs]. Output as a table with assumptions, key drivers, and estimated cash impact.",
+    "needs_attachment": true,
+    "notes": "Template prompt with [bracketed] placeholders; expects pasted/attached content"
+  },
+  {
+    "id": "anthropic-excel-formula-expert",
+    "collection": "Anthropic Prompt Library",
+    "source_url": "https://docs.anthropic.com/en/prompt-library/excel-formula-expert (via Wayback snapshot; live page now redirects)",
+    "source_ref": "User message in API request example",
+    "prompt": "I have a table with sales data, including the salesperson's name in column A, the product category in column B, the sales amount in column C, and the date of sale in column D. I want to calculate the total sales amount for each salesperson, but only for sales of products in the \"Electronics\" category that occurred in the month of January. Can you help me with the Excel formula to achieve this?",
+    "needs_attachment": false,
+    "notes": "Excel formula question; self-contained"
+  },
+  {
+    "id": "anthropic-sql-sorcerer",
+    "collection": "Anthropic Prompt Library",
+    "source_url": "https://docs.anthropic.com/en/prompt-library/sql-sorcerer (via Wayback snapshot; live page now redirects)",
+    "source_ref": "User message in API request example",
+    "prompt": "Get the list of customers who have placed orders but have not provided any reviews, along with the total amount they have spent on orders.",
+    "needs_attachment": false,
+    "notes": "NL-to-SQL; relies on schema given in the library's system prompt"
+  },
+  {
+    "id": "anthropic-grading-guru",
+    "collection": "Anthropic Prompt Library",
+    "source_url": "https://docs.anthropic.com/en/prompt-library/grading-guru (via Wayback snapshot; live page now redirects)",
+    "source_ref": "User message in API request example",
+    "prompt": "Evaluate the following two texts based on the given criteria: \n \nText 1: \nThe sun was setting behind the mountains, casting a warm golden glow across the valley. The birds chirped their evening songs as the gentle breeze rustled through the leaves. It was a peaceful and serene moment, one that filled the heart with joy and contentment. \n \nText 2: \nThe sunset was pretty. The birds were singing and the wind was blowing. It made me happy. \n \nCriteria: \n1. Descriptive language and imagery \n2. Sentence structure and variety \n3. Emotional impact and engagement \n4. Grammar and punctuation",
+    "needs_attachment": false,
+    "notes": "Compare two short texts against criteria; texts included inline"
+  },
+  {
+    "id": "anthropic-meeting-scribe",
+    "collection": "Anthropic Prompt Library",
+    "source_url": "https://docs.anthropic.com/en/prompt-library/meeting-scribe (via Wayback snapshot; live page now redirects)",
+    "source_ref": "User message in API request example",
+    "prompt": "Meeting notes:  \n  \nDate: Verona, Italy - Late 16th century  \n  \nAttendees:  \n- Lord Capulet (Head of the Capulet family)  \n- Lord Montague (Head of the Montague family)  \n- Prince Escalus (Ruler of Verona)  \n- Friar Laurence (Religious advisor)  \n  \nAgenda:  \n1. Address the ongoing feud between the Capulet and Montague families  \n2. Discuss the secret marriage of Romeo Montague and Juliet Capulet  \n3. Develop a plan to bring peace to Verona  \n4. Address the tragic deaths of Romeo and Juliet  \n  \nDiscussion:  \n- Prince Escalus opened the meeting by expressing his grave concern over the long-standing feud between the Capulet and Montague families. He admonished both Lord Capulet and Lord Montague for the recent violent clashes that have disturbed the peace in Verona's streets. The Prince warned that further violence would result in severe consequences, including heavy fines and potential exile for the perpetrators.  \n- Friar Laurence then broached the topic of the between Romeo Montague and Juliet Capulet, which had taken place under his guidance. Lord Capulet and Lord Montague evidently had not known about it, and reacted with anger and disbelief. However, Friar Laurence urged them to consider the profound and tragic love shared by their children and the potential for this love to heal the rift between the families going forward.  \n- Prince Escalus proposed a formal truce between the Capulet and Montague families. He demanded that both sides lay down their arms and cease all hostile actions against one another. The Prince declared that any violation of the truce would result in severe punishments, including the possibility of exile or even execution. Lord Capulet and Lord Montague, recognizing the wisdom in the Prince's words and the necessity of peace for the well-being of their families and the city, grudgingly agreed to the terms of the truce.  \n- The meeting took a somber turn as the tragic deaths of Romeo and Juliet were addressed. Friar Laurence recounted the unfortunate series of events that led to the young lovers taking their own lives, emphasizing the devastating impact of the families' hatred on their innocent children. Lord Capulet and Lord Montague, overcome with grief and remorse, acknowledged that their blind hatred had ultimately caused the loss of their beloved children.  \n- Prince Escalus called upon the families to learn from this heartbreaking tragedy and to embrace forgiveness and unity in honor of Romeo and Juliet's memory. He urged them to work together to create a lasting peace in Verona, setting aside their long-standing animosity. Friar Laurence offered his support in mediating any future disputes and providing spiritual guidance to help the families heal and move forward.  \n- As the meeting drew to a close, Lord Capulet and Lord Montague pledged to put an end to their feud and work towards reconciliation. Prince Escalus reaffirmed his commitment to ensuring that the truce would be upheld, promising swift justice for any who dared to break it.  \n- The attendees agreed to meet regularly to discuss the progress of their reconciliation efforts and to address any challenges that may arise.",
+    "needs_attachment": false,
+    "notes": "Long pasted meeting notes (fictional Romeo & Juliet) to summarize"
+  },
+  {
+    "id": "anthropic-corporate-clairvoyant",
+    "collection": "Anthropic Prompt Library",
+    "source_url": "https://docs.anthropic.com/en/prompt-library/corporate-clairvoyant (via Wayback snapshot; live page now redirects)",
+    "source_ref": "User message in API request example",
+    "prompt": "Your task is to analyze the following report:  \n<report>  \n[Full text of [Matterport SEC filing 10-K 2023](https://investors.matterport.com/node/9501/html), not pasted here for brevity]  \n</report>  \n  \nSummarize this annual report in a concise and clear manner, and identify key market trends and takeaways. Output your findings as a short memo I can send to my team. The goal of the memo is to ensure my team stays up to date on how financial institutions are faring and qualitatively forecast and identify whether there are any operating and revenue risks to be expected in the coming quarter. Make sure to include all relevant details in your summary and analysis.",
+    "needs_attachment": true,
+    "notes": "Summarize a 10-K into a team memo; report text omitted in the example"
+  },
+  {
+    "id": "awesome-chatgpt-etymologist",
+    "collection": "f/awesome-chatgpt-prompts",
+    "source_url": "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
+    "source_ref": "act=\"Etymologist\"",
+    "prompt": "I want you to act as a etymologist. I will give you a word and you will research the origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. My first request is \"I want to trace the origins of the word 'pizza'.\"",
+    "needs_attachment": false,
+    "notes": "Persona prompt with concrete first request"
+  },
+  {
+    "id": "awesome-chatgpt-travel-guide",
+    "collection": "f/awesome-chatgpt-prompts",
+    "source_url": "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
+    "source_ref": "act=\"Travel Guide\"",
+    "prompt": "I want you to act as a travel guide. I will write you my location and you will suggest a place to visit near my location. In some cases, I will also give you the type of places I will visit. You will also suggest me places of similar type that are close to my first location. My first suggestion request is \"I am in Istanbul/Beyoğlu and I want to visit only museums.\"",
+    "needs_attachment": false,
+    "notes": "Persona prompt with concrete first request"
+  },
+  {
+    "id": "awesome-chatgpt-proofreader",
+    "collection": "f/awesome-chatgpt-prompts",
+    "source_url": "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
+    "source_ref": "act=\"Proofreader\"",
+    "prompt": "I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors. Once you have finished reviewing the text, provide me with any necessary corrections or suggestions for improve the text.",
+    "needs_attachment": true,
+    "notes": "Persona prompt; text to be supplied later"
+  },
+  {
+    "id": "wildchat-1m-123400",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=123400&length=100",
+    "source_ref": "row_idx=123400; conversation_hash=5a7ed2cc31cd33cfa8d2d7b0329577ce",
+    "prompt": "Suggest best book to learn Excel VBA.",
+    "needs_attachment": false,
+    "notes": "Quick recommendation; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-123434",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=123400&length=100",
+    "source_ref": "row_idx=123434; conversation_hash=87d80d64a6f7bc004460f64d37e2d143",
+    "prompt": "make a health and safety policy for a factory",
+    "needs_attachment": false,
+    "notes": "Open-ended policy drafting, no details; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-123468",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=123400&length=100",
+    "source_ref": "row_idx=123468; conversation_hash=fc2e51d0cb8f520eb5f4e21606b2bce8",
+    "prompt": "Web scrape turbo.az with python and beatifulsoup",
+    "needs_attachment": false,
+    "notes": "Coding task, terse; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-339563",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=339563&length=100",
+    "source_ref": "row_idx=339563; conversation_hash=ab2fb073bebb58fb38d13ce24d5d0ecb",
+    "prompt": "Write a LinkedIn summary for Data science platform engineer with exposure in machine learning projects as well",
+    "needs_attachment": false,
+    "notes": "Short career writing; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-158195",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=158176&length=100",
+    "source_ref": "row_idx=158195; conversation_hash=a2b3c01d563af1a89a2aed229a53cf7f",
+    "prompt": "How to best start a presentation?",
+    "needs_attachment": false,
+    "notes": "General advice question; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-158249",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=158176&length=100",
+    "source_ref": "row_idx=158249; conversation_hash=32d86990c9c350c15e1cb671d0fb1999",
+    "prompt": "Convert these dates to unix 15th June, 2021 and 1st June, 2023",
+    "needs_attachment": false,
+    "notes": "Quick conversion; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-414007",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=414002&length=100",
+    "source_ref": "row_idx=414007; conversation_hash=add7eb84cbf3200094f7712e30867366",
+    "prompt": "How to replay an email I say I'm not interested in a job offered",
+    "needs_attachment": false,
+    "notes": "Short email-writing help; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-50718",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=50631&length=100",
+    "source_ref": "row_idx=50718; conversation_hash=1dd55f3b091040061bf95e2e23595096",
+    "prompt": "Print python code which will take txt file and find all ip addresses in it, including ipv4 and ipv6. Then it should save the list of all addresses to json file.",
+    "needs_attachment": false,
+    "notes": "Concrete coding task; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-50724",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=50631&length=100",
+    "source_ref": "row_idx=50724; conversation_hash=400ebda2378d39cea342b3bd9fe4f4ad",
+    "prompt": "Within other sheets, I want a formula that will check if the sheet name exist within column D of Sheet Permit Data.\nIf it does exist the value in the active sheet will read 'Ins Available'",
+    "needs_attachment": false,
+    "notes": "Spreadsheet formula, context-dependent; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-383455",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=383452&length=100",
+    "source_ref": "row_idx=383455; conversation_hash=115dab01bb1d858bf7df21f94feb6297",
+    "prompt": "what is the weight of 100g of quinoa after cooking",
+    "needs_attachment": false,
+    "notes": "Quick factual question; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-383485",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=383452&length=100",
+    "source_ref": "row_idx=383485; conversation_hash=2aa5a27abe3e72e970751e4d3383ad57",
+    "prompt": "write 3-5 bullet points for resume description of duties for executive assistant role ",
+    "needs_attachment": false,
+    "notes": "Short resume bullets; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-682627",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=682554&length=100",
+    "source_ref": "row_idx=682627; conversation_hash=bb42bf166ea098d0079e2d1adec4981c",
+    "prompt": "How to fix broken packet dependency in Linux?",
+    "needs_attachment": false,
+    "notes": "Linux troubleshooting how-to; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-76020",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=75954&length=100",
+    "source_ref": "row_idx=76020; conversation_hash=291ff320ced5e663976e0fecccb5722c",
+    "prompt": "In p5.js, please draw a robot with eyes, mouth, body, arms, and legs. Please colorize it. Please add a button that when pressed will make the eyes flash for 2 seconds. ",
+    "needs_attachment": false,
+    "notes": "Creative coding task; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-50691",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=50631&length=100",
+    "source_ref": "row_idx=50691; conversation_hash=766ec526a20ff02825acd4425bcb8281",
+    "prompt": "Create a Lesson plan for grades kinder-2nd. Kids must create a dance of the butterfly lifecycle.",
+    "needs_attachment": false,
+    "notes": "Teacher lesson planning; first user turn, English"
+  },
+  {
+    "id": "wildchat-1m-562011",
+    "collection": "WildChat-1M",
+    "source_url": "https://datasets-server.huggingface.co/rows?dataset=allenai/WildChat-1M&config=default&split=train&offset=561913&length=100",
+    "source_ref": "row_idx=562011; conversation_hash=10fc7654c90b49b32da3a0deb284d2c0",
+    "prompt": "please rewrite the following email.  kindly be informed that you can contact with the technical office to get any information regarding any technical info and approvals (approval of shopdrawing and approval of materials)",
+    "needs_attachment": false,
+    "notes": "Short email rewrite; first user turn, English"
+  }
+]

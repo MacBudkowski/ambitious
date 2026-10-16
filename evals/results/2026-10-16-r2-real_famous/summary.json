@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "date": "2026-10-16",
+    "subject": "claude-sonnet-5-5",
+    "judge": "claude-opus-5-5",
+    "scenario_file": "real_famous.json",
+    "scenarios": 30,
+    "reps": 2,
+    "subject_calls": 84,
+    "failures": [
+      {
+        "id": "willison-qr-decoder-artifact",
+        "rep": 0,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "willison-async-download-db",
+        "rep": 0,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "willison-qr-decoder-artifact",
+        "rep": 1,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "willison-boto3-404-debugger",
+        "rep": 0,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "willison-boto3-404-debugger",
+        "rep": 1,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "mollick-gpt5-startup-ideas",
+        "rep": 0,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "mollick-gpt5-startup-ideas",
+        "rep": 1,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "mollick-brutalist-building-creator",
+        "rep": 0,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "mollick-brutalist-building-creator",
+        "rep": 1,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "mollick-otter-svg",
+        "rep": 0,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "mollick-otter-svg",
+        "rep": 1,
+        "error": "chat failed after retries: completion truncated at max_tokens"
+      },
+      {
+        "id": "mollick-boardgame-infographic",
+        "rep": 0,
+        "error": "chat failed after retries: HTTP Error 429: Too Many Requests"
+      },
+      {
+        "id": "cowen-inflation-essay",
+        "rep": 1,
+        "error": "chat failed after retries: HTTP Error 429: Too Many Requests"
+      },
+      {
+        "id": "cowen-inflation-essay",
+        "rep": 0,
+        "error": "chat failed after retries: HTTP Error 429: Too Many Requests"
+      },
+      {
+        "id": "litt-japanese-texting-app",
+        "rep": 0,
+        "error": "chat failed after retries: HTTP Error 429: Too Many Requests"
+      },
+      {
+        "id": "litt-japanese-texting-app",
+        "rep": 1,
+        "error": "chat failed after retries: HTTP Error 429: Too Many Requests"
+      },
+      {
+        "id": "carlini-flask-trivia-game",
+        "rep": 0,
+        "error": "chat failed after retries: HTTP Error 429: Too Many Requests"
+      },
+      {
+        "id": "carlini-flask-trivia-game",
+        "rep": 1,
+        "error": "chat failed after retries: HTTP Error 429: Too Many Requests"
+      }
+    ]
+  },
+  "results": {
+    "altitude": {
+      "cases": 6,
+      "criteria_pass_rate": {
+        "baseline": 0.875,
+        "skill": 0.875
+      },
+      "all_criteria_met": {
+        "baseline": "3/6",
+        "skill": "3/6"
+      },
+      "mean_usefulness": {
+        "baseline": 3.33,
+        "skill": 3.33
+      },
+      "head_to_head": {
+        "skill": 5,
+        "baseline": 1,
+        "tie": 0
+      }
+    },
+    "ALL": {
+      "cases": 42,
+      "criteria_pass_rate": {
+        "baseline": 0.877,
+        "skill": 0.906
+      },
+      "all_criteria_met": {
+        "baseline": "28/42",
+        "skill": "29/42"
+      },
+      "mean_usefulness": {
+        "baseline": 3.88,
+        "skill": 4.07
+      },
+      "head_to_head": {
+        "skill": 25,
+        "baseline": 12,
+        "tie": 5
+      }
+    },
+    "depth": {
+      "cases": 8,
+      "criteria_pass_rate": {
+        "baseline": 0.893,
+        "skill": 0.821
+      },
+      "all_criteria_met": {
+        "baseline": "5/8",
+        "skill": "3/8"
+      },
+      "mean_usefulness": {
+        "baseline": 3.88,
+        "skill": 4.12
+      },
+      "head_to_head": {
+        "skill": 6,
+        "baseline": 1,
+        "tie": 1
+      }
+    },
+    "guardrail": {
+      "cases": 28,
+      "criteria_pass_rate": {
+        "baseline": 0.872,
+        "skill": 0.942
+      },
+      "all_criteria_met": {
+        "baseline": "20/28",
+        "skill": "23/28"
+      },
+      "mean_usefulness": {
+        "baseline": 4.0,
+        "skill": 4.21
+      },
+      "head_to_head": {
+        "skill": 14,
+        "baseline": 10,
+        "tie": 4
+      }
+    }
+  }
+}
