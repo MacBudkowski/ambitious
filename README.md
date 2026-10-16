@@ -1,131 +1,78 @@
-# Stay Ambitious
+# Ambitious
 
 **An agent skill that helps you ask AI for more than you would have thought to.**
 
 *(Based on Felix Rieseberg's essay [How to be more ambitious: A tutorial for humans with models](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/))*
 
-Most people ask a model for the task in front of them: fix this crash, make this deck, rewrite this guide. They rarely ask for what they actually want, such as an app that stays crash-free, leaders who catch problems early, or users who stop getting lost. That's usually not because it's impossible. It's because nobody suggested it.
+Most people ask a model for the task in front of them: fix this crash, write this email, make this deck. They rarely ask for what they actually want: an app that stays crash-free, a meeting with the right person, leaders who catch problems early. Usually not because it's impossible, but because it didn't occur to them.
 
-Stay Ambitious teaches your agent to notice those moments, ask one or two good questions, and offer **one concrete, more ambitious possibility**. Then it stops and lets you decide. It doesn't make every task bigger, and it stays quiet when a task should simply be done.
+Ambitious shows you **bolder versions of your own request**, as prompts you can send right away. It asks a few questions if it needs to, finds the goal behind your goal, and gives you a ladder of 2–3 prompts that climb from "a better version" to "the thing the essay means". You pick one, or keep your original.
 
 ## What it looks like
 
-> **You:** I need my plugin to work with the new host release. Honestly I'm tired of fixing this every release.
+> **You:** /ambitious cold email to Revolut's VP of Engineering about our code-review tool. It's faster and better for AI agents. I want a short meeting.
 >
-> **Without the skill:** a five-step general guide to plugin compatibility (adapter layer, public APIs, feature detection, CI, version ranges…).
+> **Agent:** **The goal behind the goal:** a meeting where Revolut sees your tool working on their kind of agent code, not another vendor email.
 >
-> **With the skill:** "Since you want to stop fixing this every release, you could aim for the plugin to stay compatible on its own: a small contract test suite for exactly the host APIs your plugin depends on, run automatically against the host's beta builds, so a breaking change shows up as a failing test before the release ships. It depends on the host publishing pre-release builds. Want me to start with the fix for this release?"
+> 1. > "Research Revolut's public engineering blog, talks and job posts for how they use AI coding agents, then write a 90-word email to their VP of Engineering that opens with one real, cited observation and asks for 15 minutes."
+>    *Needs:* web access, one proof point. *Check:* every claim about Revolut links to a source.
+> 2. > "Run our tool and a standard reviewer on 50 agent-generated pull requests from public fintech repos, measure review time and real bugs caught, and write the email around that one striking number."
+>    *Needs:* the tool, a sandbox, public repos. *Check:* bugs confirmed by a human reviewer, not the tool.
+> 3. > "Publish an open benchmark of code review for AI-agent pull requests, with a personalised run on a Revolut open-source repo, then design a 30-account outreach sequence led by that benchmark."
+>    *Needs:* the tool, compute, a target list. *Check:* meeting rate per 30 sends vs. current outreach.
+>
+> Pick one and I'll start, or keep the original.
 
-Both are real responses from the [evaluation](#does-it-work) (lightly trimmed).
+## How it works
+
+1. **You ask for it** (`/ambitious`, "think bigger", "how could I be more ambitious with this"), or the agent offers once, in one line, when you're planning something substantial.
+2. **It asks a few questions** if the goal, audience or limits are unclear, so the bolder versions fit what you actually want.
+3. **It shows the ladder:** the goal behind your goal, then 2–3 ready-to-send prompts, each clearly bigger than the last. Each says what it needs (access, data, tools) and how you'd know it worked (an outside check, not the model grading itself). When a real precedent fits, it cites one: "someone already did this".
+4. **You pick.** It doesn't do the task until you choose. No draft, no critique of your idea, just bolder options.
 
 ## Four kinds of ambition
 
-The four types, from the essay:
+From the essay:
 
-| Type | The shift | Example |
+| Type | The bolder ask | Example |
 |---|---|---|
-| **Speed** | Same result, much less time or effort | A day-long weekly report becomes an hour, with the same checks |
-| **Depth** | Same goal, done the way a field-leading expert would | Test "churn is an onboarding problem" against raw logs before spending a quarter on it |
-| **Range** | Borrow a concrete technique from another field | Run a usability *cognitive walkthrough* on a guide users keep misreading |
-| **Altitude** | Aim at the outcome behind the task | Stop fixing crashes one by one; aim for keeping the app crash-free |
-
-## Does it work?
-
-We tested it the way you'd test any change: the same prompts sent to a fresh model with and without the skill. A separate judge model scored each reply against that prompt's criteria without knowing which version wrote it, then picked the better of the two in random order. Each set has at least four cases per ambition type, plus "guardrail" cases where the right move is *not* to expand scope.
-
-<!-- EVAL_TABLE_START -->
-All runs: `claude-sonnet-5-5` answering, `claude-opus-5-5` judging, each prompt run twice with and twice without the skill.
-
-### 1. Real prompts where ambition should matter
-
-32 real prompts with a clear opportunity to aim higher: published prompts from Simon Willison, Harper Reed, Ethan Mollick and others; OpenAI Academy and Anthropic prompt-library tasks; real anonymised requests from [WildChat](https://huggingface.co/datasets/allenai/WildChat-1M); and an independent held-out set. Sources for every prompt are in [`evals/sources/`](evals/sources/).
-
-| Type | All criteria met: no skill | Previous version | **Current version** | Head-to-head, current (skill / without / tie) |
-|---|---|---|---|---|
-| Speed | 4/10 | 7/10 | **6/10** | 5 / 5 / 0 |
-| Depth | 14/28 | 20/28 | **21/28** | 16 / 11 / 1 |
-| Range | 0/8 | 3/8 | **5/8** | 6 / 2 / 0 |
-| Altitude | 5/18 | 6/18 | **9/18** | 14 / 4 / 0 |
-| **All** | 23/64 | 36/64 | **41/64** | 41 / 22 / 1 |
-
-### 2. Independent test sets
-
-| Test set | Written by | Criteria passed (without → with) | All criteria met | Head-to-head (skill / without / tie) |
-|---|---|---|---|---|
-| Held-out set 3 (20 × 2) | Separate agent; never used for tuning | 74% → **89%** | 17/40 → **24/40** | 28 / 9 / 3 |
-| Held-out set 2 (20 × 2) | Separate agent | 80% → **96%** | 19/40 → **34/40** | 26 / 10 / 4 |
-| Held-out set 1 (20 × 2) | Separate agent | 89% → **98%** | 28/40 → **37/40** | 27 / 13 / 0 |
-| Author scenarios (18 × 2) | Written alongside the skill | 80% → **98%** | 20/36 → **34/36** | 23 / 11 / 2 |
-
-_Section 2 was measured on the previous version._
-
-**How to read this:**
-
-- **It reliably helps on ambitious requests.** On real prompts where aiming higher matters, replies with the skill meet every criterion far more often (23 → 41 of 64) and win the blind head-to-head about two to one, while being about 20% shorter.
-- **It stays out of the way on ordinary requests.** On real "just answer" prompts (quick facts, precise specs, short rewrites) it added no unwanted scope, and replies were slightly better than without it.
-- **Known gaps.** Speed ideas sometimes reduce the problem rather than cut the repeated work; the extra idea occasionally grows into a paragraph of several items; and "build me a whole business" requests mostly get a plan rather than a working result, with or without the skill.
-- **What we changed along the way.** Early versions withheld the requested work and labelled ideas with framework terms ("That's an Altitude shift"), which judges read as jargon; removing the label alone moved one head-to-head from 9 to 28 wins out of 40 (`evals/rejudge_without_label.py`). Later rounds added a per-type pre-send check, placeholders instead of invented facts, safety notes where harm is plausible, and a nudge to add one idea on substantial work.
-
-One model pairing is evidence, not proof. Every reply and verdict is in [`evals/results/`](evals/results/).
-<!-- EVAL_TABLE_END -->
-
-Re-run it yourself on any OpenAI-compatible endpoint:
-
-```sh
-EVAL_BASE_URL=<openai-compatible-endpoint>/v1 \
-EVAL_SUBJECT_MODEL=<model> EVAL_JUDGE_MODEL=<different-or-stronger-model> \
-python3 evals/run_eval.py --scenarios evals/holdout3.json --reps 2 --out evals/results/my-run
-```
+| **Altitude** | Ask for the outcome, not the task | Stop fixing crashes one by one; ask for the app to stay crash-free |
+| **Depth** | Ask for it done the way the best in the field would | Test "churn is an onboarding problem" against raw logs; set a 200 ms target instead of 5 s |
+| **Range** | Ask for methods from other fields | Redesign a shift handoff with nursing's SBAR and aviation's read-back |
+| **Speed** | Ask for the same result in a fraction of the time | A 2-hour Monday chore that runs itself, with the same checks |
 
 ## Install
 
-The skill is a plain folder of Markdown in the open [Agent Skills](https://agentskills.io/specification) format. It has no dependencies, API keys, tools or background services, so it works with any agent that can load skills, or with any model if you paste it in.
+The skill is a plain folder of Markdown in the open [Agent Skills](https://agentskills.io/specification) format, with no dependencies, API keys or background services.
 
-- **Agents with skill support:** copy the `stay-ambitious` folder into your agent's skills directory (for example `~/.claude/skills/` for Claude Code), then start a new session. Check your agent's documentation for its skills location.
-- **Agents without skill support:** add `SKILL.md` to the system prompt or project instructions. Keep `references/` alongside it if the agent can read files, or paste in the one type you care about.
+- **Agents with skill support:** copy the `ambitious` folder into your agent's skills directory (for example `~/.claude/skills/` for Claude Code), then start a new session.
+- **Agents without skill support:** add `SKILL.md` to the system prompt or project instructions, with `references/` alongside if the agent can read files.
 
-Only the main file is needed to start. The `references/` files load on demand, one ambition type at a time.
+### Optional: let the agent offer it
 
-### Optional: let the agent check on its own
+Add this to your standing instructions:
 
-Skills load when a task matches their description. To make the check more dependable, add this to your standing instructions:
-
-> Before agreeing scope for substantial work, load the `stay-ambitious` skill and consider whether Speed, Depth, Range, or Altitude would materially help. Skip trivial, urgent, explicitly narrow, or already-agreed tasks.
-
-This is an instruction, not a guaranteed hook; the agent still decides.
+> For substantial work, you may offer the `ambitious` skill's ambition pass once, in one line. Run it only if the user says yes. Don't offer it for quick questions, urgent work or explicitly narrow requests.
 
 ## What's inside
 
 ```
-SKILL.md               The procedure: when to use, how to interview, when to stop
+SKILL.md               The ambition pass: when to run it, questions, the ladder
 references/
-  speed.md             How to apply each type, plus the article's original text
-  depth.md               for that type only, so an agent loads just what it needs
+  altitude.md          How to build each type's ladder, plus the essay's
+  depth.md               original text for that type only
   range.md
-  altitude.md
-  examples.md          Same request with four different answers; quiet skips
-  source-notice.md     Rights and attribution for the quoted article text
-evals/
-  scenarios.json       18 author-written test cases with pass criteria
-  holdout*.json        Three independent sets of 20, written without seeing the skill
-  real_*.json          Real published and real-user prompts, labelled with pass criteria
-  ambition_focus.json  The 32 real prompts where aiming higher clearly matters
-  sources/             Where each real prompt came from (URL, author, date)
-  run_eval.py          With/without-skill runner and blind judge (stdlib only)
-  rejudge_without_label.py  Diagnostic used to measure the cost of type labels
-  results/             Recorded runs: raw replies, verdicts, summary
+  speed.md
+  examples.md          Full example passes, and when not to offer
+  precedents.md        20 real, sourced cases of ambitious work with AI
+  source-notice.md     Rights and attribution for the quoted essay text
+evals/                 Earlier automated evaluation and a blind-ranking page
 tests/test_package.py  Structural checks (files, links, frontmatter, quote integrity)
 ```
 
-Run the structural checks with `python3 -m unittest discover -s tests -v`. They check the package, not model behavior; the evaluation covers behavior.
+## How it was built
 
-## Design principles
-
-- **One suggestion, then stop.** A good idea that opens a new line of thinking is the whole deliverable. Plans come later, if you want them.
-- **Selective, not inflationary.** Bigger isn't better. Typos, incidents, declined ideas and creative work keep their scope.
-- **Coach, don't quiz.** The agent brings the specialist knowledge. You shouldn't have to guess which technique it's thinking of.
-- **Interest is not approval.** No extra spending, access, agents or automation without an explicit yes.
-- **Author's words, loaded on demand.** Each type's file includes the essay's original text for that type only.
+This skill went through two designs. The first (git tag `v1.0.0-suggest`) had the agent add one short suggestion after answering; it tested well against an automated judge but felt timid in real use. An independent review pointed out why: the judge rewarded restraint, and the essay is about *you* asking for more, not the agent adding a tip. The current design came from trying it by hand on real tasks and adjusting after each try. The earlier evaluation data is kept in `evals/` for reference.
 
 ## Credits
 
@@ -133,4 +80,4 @@ Created by [Mac Budkowski](https://github.com/MacBudkowski). The four-type frame
 
 ## License
 
-MIT for this package's original content; see [LICENSE](LICENSE). Quoted article text is excluded; see [references/source-notice.md](references/source-notice.md).
+MIT for this package's original content; see [LICENSE](LICENSE). Quoted essay text is excluded; see [references/source-notice.md](references/source-notice.md).

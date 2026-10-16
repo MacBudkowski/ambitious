@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Behavioral evaluation for the stay-ambitious skill.
+"""Behavioral evaluation for the ambitious skill.
 
 For every scenario in evals/scenarios.json, a subject model answers the prompt
 twice in fresh contexts: once with a plain assistant system prompt (baseline)

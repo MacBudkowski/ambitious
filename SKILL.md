@@ -1,14 +1,14 @@
 ---
-name: stay-ambitious
+name: ambitious
 description: Use when the user wants to think bigger about a task. Also offer once when planning substantial work. Shows the user bolder versions of their own request (Altitude, Depth, Range, Speed) as ready-to-send prompts, each with what it needs and how to check it worked, and lets them pick.
 license: MIT
 metadata:
   author: Mac Budkowski (MacBudkowski)
-  version: "2.0.0"
+  version: "2.1.0"
   tags: "planning, ambition, prompting, coaching"
 ---
 
-# Stay Ambitious
+# Ambitious
 
 People ask models for less than they could get. Usually not because the bigger thing is impossible, but because it didn't occur to them, or they assumed it was too hard. This skill runs an **ambition pass**: it shows the user bolder versions of what *they* could ask for, as prompts they can send right now, and lets them choose how high to go.
 

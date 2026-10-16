@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.0 — 2026-10-16
+
+Renamed to **ambitious**.
+
+## 2.0.0 — 2026-10-16
+
+Redesigned as an **ambition pass** for the user: the goal behind the goal, then a ladder of 2–3 bolder, ready-to-send prompts with what each needs and how to check it, then the user picks. Asks a few questions first when that improves fit. When invoked it returns prompts only (no draft, no critique). Added `references/precedents.md` (20 sourced cases) and a blind-ranking page in `evals/human/`. The previous one-suggestion design is tagged `v1.0.0-suggest`.
+
 ## 1.0.0 — 2026-10-16
 
 Renamed from `ambition-check` to **stay-ambitious**, and restructured.

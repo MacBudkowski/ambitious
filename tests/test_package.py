@@ -1,4 +1,4 @@
-"""Structural checks for the stay-ambitious package (stdlib only).
+"""Structural checks for the ambitious package (stdlib only).
 
 These verify packaging, not model behavior; see evals/ for behavior.
 """
@@ -53,7 +53,7 @@ class PackageTests(unittest.TestCase):
         text = (ROOT / "SKILL.md").read_text()
         fm = frontmatter(text)
         name = fm.get("name", "")
-        self.assertEqual(name, "stay-ambitious")
+        self.assertEqual(name, "ambitious")
         self.assertRegex(name, r"^[a-z0-9]+(-[a-z0-9]+)*$")
         self.assertLessEqual(len(name), 64)
         desc = fm.get("description", "")

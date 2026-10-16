@@ -1,4 +1,4 @@
-# Human blind ranking — stay-ambitious
+# Human blind ranking — ambitious
 
 You read replies from different systems for the same prompt and rank them **without knowing which system wrote which**. Replies are labelled only A, B, C, D, and the order is shuffled for every prompt.
 
