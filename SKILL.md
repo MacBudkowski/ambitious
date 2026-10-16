@@ -28,13 +28,15 @@ Reply in this shape:
 
 **1. The goal behind the goal** (one line). What do they want to happen *after* this task is done? Use their words.
 
-If the goal is unclear and the answer would change the ladder, ask one question first, and make it obvious the pass has started, so a short question doesn't look like a dead end:
+**Asking first is good.** A ladder only helps if it fits what they actually want, so when the goal, audience or constraints are unclear, ask before writing rungs. A few questions are fine. Make it obvious the pass has started, so a question doesn't look like a dead end:
 
-> "Let's aim higher with this. First, one question so the bolder versions fit: what do you most want the launch to achieve: people using it, feedback, or visibility?"
+> "Let's aim higher with this. A few quick questions first so the bolder versions fit: (1) what do you most want the launch to achieve: people using it, feedback, or visibility? (2) who should find it first?"
 
-Offer 2–4 likely answers so they can reply in a word. Then stop and wait. When they answer, go straight to the ladder without re-asking.
+- Ask only what would change the ladder. Usually 1–3 questions; ask them together, or one at a time if each answer shapes the next.
+- Offer likely answers so they can reply in a word.
+- When you have enough, go straight to the ladder. Don't re-ask what they've answered.
 
-If the goal is reasonably clear, skip the question: state it in one line and go on.
+If the goal is already clear, skip the questions: state it in one line and go on.
 
 **2. A ladder of 2–3 bolder asks.** Each rung is a prompt the user could copy and send, written in their voice, climbing in ambition. Pick the one or two types that fit this task best (table below); don't force all four.
 
